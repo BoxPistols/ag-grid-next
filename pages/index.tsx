@@ -8,9 +8,9 @@ const App = () => {
   const [rowData, setRowData] = useState([])
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "make", filter: true },
-    { field: "model", filter: true },
-    { field: "price" },
+    { field: "make", sortable: true, filter: true },
+    { field: "model", sortable: true, filter: true },
+    { field: "price", sortable: true },
   ])
 
   useEffect(() => {
