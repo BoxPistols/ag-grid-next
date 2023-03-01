@@ -31,9 +31,12 @@ const App = () => {
 
   return (
     <>
-      <div className="ag-theme-alpine" style={{ height: 400 }}>
-        <AgGridReact rowData={rowData} columnDefs={columnDefs} />
-      </div>
+      <main>
+        <h1>React Data Grid: Get Started with AG Grid</h1>
+        <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
+          <AgGridReact rowData={rowData} columnDefs={columnDefs} />
+        </div>
+      </main>
     </>
   )
 }
