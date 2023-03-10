@@ -1,11 +1,12 @@
-// let AG_GRID_LOCALE_JA = {
-export const localeJa = {
+// Example locale file for English, give this to your locale team to translate
+
+export const AG_GRID_LOCALE_EN = {
   // Set Filter
-  selectAll: "(すべて選択)",
-  selectAllSearchResults: "(すべての検索結果を選択)",
-  searchOoo: "捜索...",
-  blanks: "(空白)",
-  noMatches: "一致なし",
+  selectAll: "(Select All)",
+  selectAllSearchResults: "(Select All Search Results)",
+  searchOoo: "Search...",
+  blanks: "(Blanks)",
+  noMatches: "No matches",
 
   // Number Filter & Text Filter
   filterOoo: "Filter...",
@@ -59,7 +60,7 @@ export const localeJa = {
   // columns tool panel
   pivotMode: "Pivot Mode",
   groups: "Row Groups",
-  rowGroupColumnsEmptyMessage: "ここをドラッグして行グループを設定します",
+  rowGroupColumnsEmptyMessage: "Drag here to set row groups",
   values: "Values",
   valueColumnsEmptyMessage: "Drag here to aggregate",
   pivots: "Column Labels",
@@ -335,10 +336,3 @@ export const localeJa = {
   thousandSeparator: ",",
   decimalSeparator: ".",
 }
-
-// Object.keys(AG_GRID_LOCALE_EN).forEach(function (key) {
-//   if (key === "thousandSeparator" || key === "decimalSeparator") {
-//     return
-//   }
-//   AG_GRID_LOCALE_JA[key] = "ja-" + AG_GRID_LOCALE_EN[key]
-// })
