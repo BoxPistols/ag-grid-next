@@ -3,7 +3,8 @@ import { useState, useEffect } from "react"
 // Next
 import Head from "next/head"
 // Chart
-import ChartBar from "@/src/components/Chart/ChartBar"
+// import ChartBar from "@/src/components/Chart/ChartBar"
+
 // css AgGrid
 import "ag-grid-community/styles/ag-grid.css"
 import "ag-grid-community/styles/ag-theme-alpine.css"
@@ -29,19 +30,19 @@ const App = () => {
         </h1>
 
         <div className={styles.grid}>
-          <div className={styles.box}>
+          {/* <div className={styles.box}> */}
             <div
               className="ag-theme-alpine"
-              style={{ height: 400, width: 500 }}
+              style={{ height: 800, width: 1200 }}
             >
-              <h2 className={styles.head_2}>AgGrid Table</h2>
+              {/* <h2 className={styles.head_2}>AgGrid Table</h2> */}
               <AgBasic />
             </div>
           </div>
-          <div className={styles.box}>
+          {/* <div className={styles.box}>
             <ChartBar />
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </main>
     </>
   )
