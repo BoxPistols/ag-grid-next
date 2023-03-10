@@ -27,7 +27,7 @@ Chart.register(
   BarElement
 )
 
-const Graph = () => {
+const ChartBar = () => {
   const data = {
     // x 軸のラベル
     labels: ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月", "7 月", "8月"],
@@ -110,4 +110,4 @@ const Graph = () => {
   )
 }
 
-export default Graph
+export default ChartBar
