@@ -9,6 +9,16 @@
 					"label": ""
 				}
 			]
+		},
+		{
+			"path": "src/components/Chart/CovidData.tsx",
+			"bookmarks": [
+				{
+					"line": 57,
+					"column": 1,
+					"label": ""
+				}
+			]
 		}
 	]
 }

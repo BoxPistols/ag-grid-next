@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect } from "react"
 import { AgGridReact } from "ag-grid-react"
-// import "ag-grid-community/dist/styles/ag-grid.css"
-// import "ag-grid-community/dist/styles/ag-theme-alpine.css"
+import { localeJa } from "@/assets/locale.ja"
 
 interface CountryData {
   Country: string
@@ -13,10 +12,9 @@ interface CountryData {
   TotalRecovered: number
 }
 
-import { localeJa } from "@/assets/locale.ja"
-
 const CovidData: React.FC = () => {
   const [rowData, setRowData] = useState<CountryData[]>([])
+  const [filter, setFilter] = useState<{ [key: string]: string }>({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,21 +25,75 @@ const CovidData: React.FC = () => {
     fetchData()
   }, [])
 
+  const numberFilterParams = (type: string) => {
+    return {
+      filterOptions: [
+        "lessThan",
+        "greaterThan",
+        "equals",
+        `${type}OrGreaterThan`,
+        `${type}OrLessThan`,
+      ],
+      suppressAndOrCondition: true,
+      // フィルターのプレースホルダーを日本語にする
+      placeholder: "値を入力",
+      // プルダウンメニューのラベルを日本語にする
+      comparatorTexts: {
+        lessThan: "未満",
+        greaterThan: "より大きい",
+        equals: "等しい",
+        lessThanOrEqual: "以下",
+        greaterThanOrEqual: "以上",
+        inRange: "範囲内",
+      },
+    }
+  }
+
   const columnDefs = [
-    { headerName: "Country", field: "Country" },
-    { headerName: "New Confirmed", field: "NewConfirmed" },
-    { headerName: "Total Confirmed", field: "TotalConfirmed" },
-    { headerName: "New Deaths", field: "NewDeaths" },
-    { headerName: "Total Deaths", field: "TotalDeaths" },
-    { headerName: "New Recovered", field: "NewRecovered" },
-    { headerName: "Total Recovered", field: "TotalRecovered" },
+    { headerName: "国名", field: "Country" },
+    {
+      headerName: "新規感染者数",
+      field: "NewConfirmed",
+      filter: "agNumberColumnFilter",
+      filterParams: numberFilterParams("lessThanOrEqual"),
+      sortable: true,
+    },
+    {
+      headerName: "累計感染者数",
+      field: "TotalConfirmed",
+      filter: "agNumberColumnFilter",
+      filterParams: numberFilterParams("totalConfirmed"),
+      sortable: true,
+    },
+    {
+      headerName: "新規死亡者数",
+      field: "NewDeaths",
+      sortable: true,
+    },
+    {
+      headerName: "累計死亡者数",
+      field: "TotalDeaths",
+      sortable: true,
+    },
+    {
+      headerName: "新規回復者数",
+      field: "NewRecovered",
+      sortable: true,
+    },
+    {
+      headerName: "累計回復者数",
+      field: "TotalRecovered",
+      sortable: true,
+    },
   ]
 
-    const localeText = useMemo<{
-      [key: string]: string
-    }>(() => {
-      return localeJa
-    }, [])
+  const defaultColDef = {
+    filter: true,
+  }
+
+  const localeText = useMemo<{ [key: string]: string }>(() => {
+    return localeJa
+  }, [])
 
   return (
     <div className="ag-theme-alpine" style={{ height: "400px", width: "100%" }}>
@@ -50,6 +102,7 @@ const CovidData: React.FC = () => {
         rowData={rowData}
         pagination={true}
         paginationPageSize={20}
+        defaultColDef={defaultColDef}
         localeText={localeText}
       />
     </div>
