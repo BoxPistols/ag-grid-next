@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from "react"
-import { render } from "react-dom"
+// import { render } from "react-dom"
 import { AgGridReact } from "ag-grid-react"
 import "ag-grid-enterprise"
 import "ag-grid-community/styles/ag-grid.css"
@@ -98,9 +98,10 @@ export const AgBasic = () => {
   //     return localeJa
   //   })
   // }
-  const getLocaleText = (params: GetLocaleTextParams) => {
-    params: localeJa
-  }
+
+  // const getLocaleText = (params: GetLocaleTextParams) => {
+  //   params: localeJa
+  // }
 
   const localeText = useMemo<{
     [key: string]: string

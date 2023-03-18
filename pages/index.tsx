@@ -11,6 +11,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css"
 // css local
 import styles from "@/styles/Home.module.css"
 import { AgBasic } from "@/src/components/AgGrid/AgBasic"
+import CovidData from "@/src/components/Chart/CovidData"
 
 const App = () => {
   return (
@@ -31,15 +32,16 @@ const App = () => {
 
         <div className={styles.grid}>
           {/* <div className={styles.box}> */}
-            <div
-              className="ag-theme-alpine"
-              style={{ height: 800, width: 1200 }}
-            >
-              {/* <h2 className={styles.head_2}>AgGrid Table</h2> */}
-              <AgBasic />
-            </div>
+          <div className="ag-theme-alpine" style={{ height: 800, width: 1200 }}>
+            <h2 className={styles.head_2}>Covid Data Table</h2>
+            <CovidData />
+
+
+            <h2 className={styles.head_2} style={{marginTop: 32}}>AgGrid Table</h2>
+            <AgBasic />
           </div>
-          {/* <div className={styles.box}>
+        </div>
+        {/* <div className={styles.box}>
             <ChartBar />
           </div> */}
         {/* </div> */}
