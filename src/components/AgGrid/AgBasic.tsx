@@ -33,7 +33,7 @@ export const AgBasic = () => {
     // this row just shows the row index, doesn't use any data from the row
     {
       headerName: "#",
-      // cellRenderer: NodeIdRenderer,
+      cellRenderer: null,
     },
     {
       field: "athlete",
@@ -43,6 +43,7 @@ export const AgBasic = () => {
       field: "age",
       filterParams: { buttons: ["apply", "cancel"] },
       enablePivot: true,
+      filter: "agNumberColumnFilter",
     },
     { field: "country", enableRowGroup: true },
     { field: "year", filter: "agNumberColumnFilter" },
