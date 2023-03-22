@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo, useRef, useState } from "react"
-import { render } from "react-dom"
+// import { render } from "react-dom"
 import { AgGridReact } from "ag-grid-react"
-import "ag-grid-enterprise"
-import "ag-grid-community/styles/ag-grid.css"
-import "ag-grid-community/styles/ag-theme-alpine.css"
+// import "ag-grid-enterprise"
+// import "ag-grid-community/styles/ag-grid.css"
+// import "ag-grid-community/styles/ag-theme-alpine.css"
 import {
   ColDef,
   ColGroupDef,
@@ -31,10 +31,10 @@ export const AgBasic = () => {
   const [rowData, setRowData] = useState<IOlympicData[]>()
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([
     // this row just shows the row index, doesn't use any data from the row
-    {
-      headerName: "#",
-      // cellRenderer: NodeIdRenderer,
-    },
+    // {
+    //   headerName: "#",
+    //   cellRenderer: null,
+    // },
     {
       field: "athlete",
       filterParams: { buttons: ["clear", "reset", "apply"] },
@@ -43,6 +43,7 @@ export const AgBasic = () => {
       field: "age",
       filterParams: { buttons: ["apply", "cancel"] },
       enablePivot: true,
+      filter: "agNumberColumnFilter",
     },
     { field: "country", enableRowGroup: true },
     { field: "year", filter: "agNumberColumnFilter" },
@@ -98,9 +99,10 @@ export const AgBasic = () => {
   //     return localeJa
   //   })
   // }
-  const getLocaleText = (params: GetLocaleTextParams) => {
-    params: localeJa
-  }
+
+  // const getLocaleText = (params: GetLocaleTextParams) => {
+  //   params: localeJa
+  // }
 
   const localeText = useMemo<{
     [key: string]: string
