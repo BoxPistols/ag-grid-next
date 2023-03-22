@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Head from "next/head"
 // Chart
 // import ChartBar from "@/src/components/Chart/ChartBar"
-
+import "ag-grid-enterprise"
 // css AgGrid
 import "ag-grid-community/styles/ag-grid.css"
 import "ag-grid-community/styles/ag-theme-alpine.css"
@@ -37,14 +37,16 @@ const App = () => {
             {/* <h2 className={styles.head_2}>Covid Data Basic</h2>
             <CovidDataBasic /> */}
             <h2 className={styles.head_2} style={{ marginTop: 32 }}>
-              AgGrid Table
+              AgGrid Table (covid19api)
             </h2>
-            <AgBasic />
+            <p>covid19apiを通して、シンプルなデータでAgGrid Tableを検証する</p>
+            <CovidData />
 
             <h2 className={styles.head_2} style={{ marginTop: 32 }}>
-              Covid Data Filter
+              AgGrid Table (olympic-winners)
             </h2>
-            <CovidData />
+            <p>olympic-winnersを通して、大きなデータでAgGrid Tableを検証する</p>
+            <AgBasic />
           </div>
         </div>
         {/* <div className={styles.box}>
