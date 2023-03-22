@@ -24,6 +24,21 @@
 					"label": ""
 				}
 			]
+		},
+		{
+			"path": "pages/layout/index.tsx",
+			"bookmarks": [
+				{
+					"line": 25,
+					"column": 6,
+					"label": ""
+				},
+				{
+					"line": 168,
+					"column": 70,
+					"label": ""
+				}
+			]
 		}
 	]
 }
