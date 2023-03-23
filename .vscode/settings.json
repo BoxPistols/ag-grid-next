@@ -1,0 +1,6 @@
+{
+  "python.linting.lintOnSave": false,
+  "eslint.run": "onSave",
+  "markdownlint.run": "onSave",
+  "editor.formatOnSave": true
+}
