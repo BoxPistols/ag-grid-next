@@ -39,6 +39,21 @@
 					"label": ""
 				}
 			]
+		},
+		{
+			"path": "src/content/GlobalAppBar.tsx",
+			"bookmarks": [
+				{
+					"line": 70,
+					"column": 23,
+					"label": ""
+				},
+				{
+					"line": 280,
+					"column": 30,
+					"label": ""
+				}
+			]
 		}
 	]
 }
