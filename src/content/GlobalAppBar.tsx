@@ -1,7 +1,7 @@
-import * as React from "react"
-import { useState, useEffect } from "react"
-import { styled, alpha } from "@mui/material/styles"
-import Skeleton from "@mui/material/Skeleton"
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+import { styled, alpha } from '@mui/material/styles';
+import Skeleton from '@mui/material/Skeleton';
 
 import {
   AppBar,
@@ -13,7 +13,7 @@ import {
   Badge,
   MenuItem,
   Menu,
-} from "@mui/material"
+} from '@mui/material';
 
 import {
   Menu as MenuIcon,
@@ -22,103 +22,101 @@ import {
   Mail as MailIcon,
   Notifications as NotificationsIcon,
   MoreVert as MoreIcon,
-} from "@mui/icons-material"
+} from '@mui/icons-material';
 
-import { blueGrey } from "@mui/material/colors"
-import { Sidebar } from "./SideBar"
-const primaryOverride = blueGrey[900]
+import { blueGrey } from '@mui/material/colors';
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
+type GlobalAppBarProps = {
+  handleDrawerToggle: () => void;
+};
+
+const primaryOverride = blueGrey[900];
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
+  '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
-    width: "auto",
+    width: 'auto',
   },
-}))
+}));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
+const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}))
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
+  color: 'inherit',
+  '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
     },
   },
-}))
+}));
 
-export const GlobalAppBar = () => {
+export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
   // loading
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(false)
-  }, [])
-
-  // SideBar
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const handleDrawerToggle = () => {
-    setDrawerOpen(!drawerOpen)
-  }
+    setLoading(false);
+  }, []);
 
   // ----
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-    React.useState<null | HTMLElement>(null)
+    React.useState<null | HTMLElement>(null);
 
-  const isMenuOpen = Boolean(anchorEl)
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null)
-  }
+    setMobileMoreAnchorEl(null);
+  };
 
   const handleMenuClose = () => {
-    setAnchorEl(null)
-    handleMobileMenuClose()
-  }
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget)
-  }
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
 
-  const menuId = "primary-search-account-menu"
+  const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: 'top',
+        horizontal: 'right',
       }}
       id={menuId}
       keepMounted
       transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: 'top',
+        horizontal: 'right',
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
@@ -126,21 +124,21 @@ export const GlobalAppBar = () => {
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
-  )
+  );
 
-  const mobileMenuId = "primary-search-account-menu-mobile"
+  const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: 'top',
+        horizontal: 'right',
       }}
       id={mobileMenuId}
       keepMounted
       transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: 'top',
+        horizontal: 'right',
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
@@ -178,7 +176,7 @@ export const GlobalAppBar = () => {
         <p>Profile</p>
       </MenuItem>
     </Menu>
-  )
+  );
 
   return (
     <>
@@ -197,24 +195,15 @@ export const GlobalAppBar = () => {
                 color="inherit"
                 aria-label="open drawer"
                 sx={{ mr: 2 }}
+                onClick={handleDrawerToggle} // ここに handleDrawerToggle を追加
               >
-                {/* <MenuIcon /> */}
-                <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                  sx={{ mr: 2 }}
-                  onClick={handleDrawerToggle} // ここにhandleDrawerToggleを追加します
-                >
-                  <MenuIcon />
-                </IconButton>
+                <MenuIcon />
               </IconButton>
               <Typography
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: 'none', sm: 'block' } }}
               >
                 {/* Title */}
                 React Data Grid
@@ -225,11 +214,11 @@ export const GlobalAppBar = () => {
                 </SearchIconWrapper>
                 <StyledInputBase
                   placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
+                  inputProps={{ 'aria-label': 'search' }}
                 />
               </Search>
               <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <IconButton
                   size="large"
                   aria-label="show 4 new mails"
@@ -260,7 +249,7 @@ export const GlobalAppBar = () => {
                   <AccountCircle />
                 </IconButton>
               </Box>
-              <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                   size="large"
                   aria-label="show more"
@@ -278,7 +267,6 @@ export const GlobalAppBar = () => {
         {renderMobileMenu}
         {renderMenu}
       </Box>
-      <Sidebar handleDrawerToggle={handleDrawerToggle} />
     </>
-  )
-}
+  );
+};

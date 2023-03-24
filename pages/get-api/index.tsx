@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { GlobalAppBar } from "@/src/content/GlobalAppBar"
 
 type Data = {
   name: string;
@@ -26,7 +25,6 @@ const UserInfo = () => {
 
   return (
     <>
-      <GlobalAppBar />
       <div>
         <p>名前: {data.name}</p>
         <p>年齢: {data.age}</p>
@@ -34,6 +32,6 @@ const UserInfo = () => {
       </div>
     </>
   );
-}
+};
 
 export default UserInfo;

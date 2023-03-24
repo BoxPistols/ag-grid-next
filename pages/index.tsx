@@ -1,21 +1,20 @@
 // React
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
 // Next
-import Head from "next/head"
+import Head from 'next/head';
 // design
 
 // Chart
 // import ChartBar from "@/src/components/Chart/ChartBar"
-import "ag-grid-enterprise"
+import 'ag-grid-enterprise';
 // css AgGrid
-import "ag-grid-community/styles/ag-grid.css"
-import "ag-grid-community/styles/ag-theme-alpine.css"
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 // css local
-import styles from "@/styles/Home.module.css"
-import { AgBasic } from "@/src/components/AgGrid/AgBasic"
+import styles from '@/styles/Home.module.css';
+import { AgBasic } from '@/src/components/AgGrid/AgBasic';
 // import CovidDataBasic from "@/src/components/Chart/CovidDataBasic"
-import CovidData from "@/src/components/Chart/CovidData"
-import { GlobalAppBar } from "@/src/content/GlobalAppBar"
+import CovidData from '@/src/components/Chart/CovidData';
 
 const App = () => {
   return (
@@ -27,18 +26,10 @@ const App = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <GlobalAppBar />
       {/* content */}
       <main className={styles.main}>
-        {/* <h1 className={styles.head_1}>
-          React Data Grid: Get Started with AG Grid
-        </h1> */}
-
         <div className={styles.grid}>
-          {/* <div className={styles.box}> */}
           <div className="ag-theme-alpine" style={{ height: 800, width: 1200 }}>
-            {/* <h2 className={styles.head_2}>Covid Data Basic</h2>
-            <CovidDataBasic /> */}
             <h2 className={styles.head_2} style={{ marginTop: 32 }}>
               AgGrid Table (covid19api)
             </h2>
@@ -58,7 +49,7 @@ const App = () => {
         {/* </div> */}
       </main>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

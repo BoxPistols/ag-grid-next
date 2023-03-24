@@ -1,23 +1,21 @@
-import type { AppProps } from "next/app"
-import "@/styles/globals.css"
-import "@/assets/locale.ja.js"
+import { useState } from 'react';
+import type { AppProps } from 'next/app';
+import '@/styles/globals.css';
+import '@/assets/locale.ja.js';
+import { GlobalAppBar } from '@/src/content/GlobalAppBar';
+import { Sidebar } from '@/src/content/SideBar';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const [open, setOpen] = useState(false);
+  const handleDrawerToggle = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <>
+      <GlobalAppBar handleDrawerToggle={handleDrawerToggle} />
+      <Sidebar open={open} handleDrawerToggle={handleDrawerToggle} />
+      <Component {...pageProps} />
+    </>
+  );
 }
-
-// _app.js
-// import { ThemeProvider } from '@mui/material/styles';
-// import CssBaseline from '@mui/material/CssBaseline';
-// import theme from '../theme';
-
-// function MyApp({ Component, pageProps }) {
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <CssBaseline />
-//       <Component {...pageProps} />
-//     </ThemeProvider>
-//   );
-// }
-
-// export default MyApp;

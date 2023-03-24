@@ -1,6 +1,6 @@
 // components/Sidebar.js
-import * as React from "react"
-import { useState } from "react"
+import * as React from 'react';
+import { useState } from 'react';
 import {
   Drawer,
   List,
@@ -8,9 +8,9 @@ import {
   ListItemIcon,
   ListItemText,
   IconButton,
-} from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { Menu } from "@mui/icons-material"
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Menu } from '@mui/icons-material';
 import {
   Home,
   ShoppingCart,
@@ -19,59 +19,46 @@ import {
   People,
   Info,
   Mail,
-} from "@mui/icons-material"
+} from '@mui/icons-material';
 
 // 新しい型定義を追加
 type SidebarProps = {
-  handleDrawerToggle: () => void
-}
+  open: boolean;
+  handleDrawerToggle: () => void;
+};
 
-const drawerWidth = 250
+const drawerWidth = 250;
 
-const DrawerContainer = styled("div")`
+const DrawerContainer = styled('div')`
   width: ${drawerWidth}px;
   flex-shrink: 0;
-`
+`;
 
-const DrawerPaper = styled("div")`
+const DrawerPaper = styled('div')`
   width: ${drawerWidth}px;
-`
+`;
 
 const MenuButton = styled(IconButton)`
   margin-right: ${({ theme }) => theme.spacing(2)};
-`
+`;
 
-export const Sidebar = () => {
-  const [open, setOpen] = useState(false)
-
-  const handleDrawerToggle = () => {
-    setOpen(!open)
-  }
-
+export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
   const menuItems = [
-    { icon: <Home />, text: "ホーム", href: "/" },
-    { icon: <ShoppingCart />, text: "ショッピング", href: "/shopping" },
-    { icon: <ListAlt />, text: "リスト", href: "/list" },
-    { icon: <Settings />, text: "設定", href: "/settings" },
-    { icon: <People />, text: "ユーザー", href: "/users" },
-    { icon: <Info />, text: "情報", href: "/info" },
-    { icon: <Mail />, text: "お問い合わせ", href: "/contact" },
-  ]
+    { icon: <Home />, text: 'ホーム', href: '/' },
+    { icon: <ShoppingCart />, text: 'ショッピング', href: '/shopping' },
+    { icon: <ListAlt />, text: 'リスト', href: '/list' },
+    { icon: <Settings />, text: '設定', href: '/settings' },
+    { icon: <People />, text: 'ユーザー', href: '/users' },
+    { icon: <Info />, text: '情報', href: '/info' },
+    { icon: <Mail />, text: 'お問い合わせ', href: '/contact' },
+  ];
 
   return (
     <>
-      <MenuButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={handleDrawerToggle}
-      >
-        <Menu />
-      </MenuButton>
       <Drawer
         sx={{
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
             width: drawerWidth,
           },
         }}
@@ -87,7 +74,7 @@ export const Sidebar = () => {
           <DrawerPaper>
             <List>
               {menuItems.map((item, index) => (
-                <ListItem button key={index} component="a" href={item.href}>
+                <ListItem key={index} component="a" href={item.href}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItem>
@@ -97,5 +84,5 @@ export const Sidebar = () => {
         </DrawerContainer>
       </Drawer>
     </>
-  )
-}
+  );
+};
