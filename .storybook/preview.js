@@ -1,14 +1,15 @@
-import { CacheProvider, cache } from '@emotion/react';
+
+import * as React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from '../src/lib/theme';
+import CssBaseline from '@mui/material/CssBaseline';
+import { theme } from '../src/lib/theme';
 
 export const decorators = [
   (Story) => (
-    <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>
-        <Story />
-      </ThemeProvider>
-    </CacheProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Story />
+    </ThemeProvider>
   ),
 ];
 
