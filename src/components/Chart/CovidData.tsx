@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import { GridApi } from 'ag-grid-community'
 import { GridReadyEvent } from 'ag-grid-community'
@@ -26,25 +26,24 @@ const CovidData = (): JSX.Element => {
   const [allCountries, setAllCountries] = useState<string[]>([])
 
   const gridApiRef = useRef<GridApi | null>(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.covid19api.com/summary')
-        const data = await response.json()
-        setRowData(data.Countries)
-        setIsDataLoaded(true)
-        setAllCountries(
-          //複数の国を取得
-          data.Countries.map((country: CountryData) => country.Country)
-        )
-        console.log('get data!!')
-      } catch (error) {
-        console.log('get data error... ' + error)
-      }
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch('https://api.covid19api.com/summary')
+      const data = await response.json()
+      setRowData(data.Countries)
+      setIsDataLoaded(true)
+      setAllCountries(
+        //複数の国を取得
+        data.Countries.map((country: CountryData) => country.Country)
+      )
+      console.log('get data!!')
+    } catch (error) {
+      console.log('get data error... ' + error)
     }
-    fetchData()
   }, [])
+  useEffect(() => {
+    fetchData()
+  }, [fetchData])
 
   // ----- for MUI filter -----
   const onGridReady = (event: GridReadyEvent) => {
@@ -174,15 +173,3 @@ const CovidData = (): JSX.Element => {
 }
 
 export default CovidData
-
-/** Docs
- 与えられたコードはTypeScriptで書かれており、React、Ag-Grid、Material UIコンポーネントを利用して、APIからフェッチした国別のCOVID-19データのテーブルを表示しています。このコードでは、「useEffect」フックを使ってデータを取得し、「useState」を使って取得したデータの状態を「rowData」にセットしています。
-
-国名は、Material UIのTextFieldコンポーネントを使用した検索バーでフィルタリングすることができます。
-
-Ag-Grid Reactコンポーネントは、NewConfirmed、TotalConfirmed、NewDeaths、TotalDeaths、NewRecovered、TotalRecoveredといった複数の列を持つテーブルでデータを表示するために使用されています。テーブルのヘッダーや、ソートやフィルタリングのオプションなどの構成は、columnDefsとdefaultColDefプロパティを使用して変更することができます。
-
-コードでは、useStateを使用してデータの状態とisDataLoadedを管理し、useStateを使用してgridApiとcolumnApiの値も設定しています。Ag-GridReactコンポーネントは、クラス名「ag-theme-alpine」を持つdivの中にラップされ、isDataLoadedを使用して条件付きでレンダリングされています。
-
-コードはきれいなコーディングスタイルに従っており、大きなリファクタリングは必要ありません。しかし、const変数内の各プロパティ、例えばcolumnDefsやgridOptionsについては、より読みやすくするために、より説明的なコメントを書くことができるでしょう。
-*/

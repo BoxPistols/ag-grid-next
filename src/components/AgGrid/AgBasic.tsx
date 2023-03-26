@@ -1,6 +1,6 @@
-import React, { useCallback, useMemo, useRef, useState } from "react"
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 // import { render } from "react-dom"
-import { AgGridReact } from "ag-grid-react"
+import { AgGridReact } from 'ag-grid-react'
 // import "ag-grid-enterprise"
 // import "ag-grid-community/styles/ag-grid.css"
 // import "ag-grid-community/styles/ag-theme-alpine.css"
@@ -16,18 +16,18 @@ import {
   SideBarDef,
   StatusPanelDef,
   // applicationLocaleService,
-} from "ag-grid-community"
-import { IOlympicData } from "./interfaces"
+} from 'ag-grid-community'
+import { IOlympicData } from './interfaces'
 
 // import { AG_GRID_LOCALE_EN } from "@/assets/locale.en"
-import { localeJa } from "@/assets/locale.ja"
+import { localeJa } from '@/assets/locale.ja'
 // var GridOptions = {
 //   localeText: [{ localeJa }],
 // }
 
 export const AgBasic = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), [])
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), [])
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), [])
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), [])
   const [rowData, setRowData] = useState<IOlympicData[]>()
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([
     // this row just shows the row index, doesn't use any data from the row
@@ -36,38 +36,38 @@ export const AgBasic = () => {
     //   cellRenderer: null,
     // },
     {
-      field: "athlete",
-      filterParams: { buttons: ["clear", "reset", "apply"] },
+      field: 'athlete',
+      filterParams: { buttons: ['clear', 'reset', 'apply'] },
     },
     {
-      field: "age",
-      filterParams: { buttons: ["apply", "cancel"] },
+      field: 'age',
+      filterParams: { buttons: ['apply', 'cancel'] },
       enablePivot: true,
-      filter: "agNumberColumnFilter",
+      filter: 'agNumberColumnFilter',
     },
-    { field: "country", enableRowGroup: true },
-    { field: "year", filter: "agNumberColumnFilter" },
-    { field: "date" },
+    { field: 'country', enableRowGroup: true },
+    { field: 'year', filter: 'agNumberColumnFilter' },
+    { field: 'date' },
     {
-      field: "sport",
-      filter: "agMultiColumnFilter",
+      field: 'sport',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agTextColumnFilter",
-            display: "accordion",
+            filter: 'agTextColumnFilter',
+            display: 'accordion',
           },
           {
-            filter: "agSetColumnFilter",
-            display: "accordion",
+            filter: 'agSetColumnFilter',
+            display: 'accordion',
           },
         ],
       },
     },
-    { field: "gold", enableValue: true },
-    { field: "silver", enableValue: true },
-    { field: "bronze", enableValue: true },
-    { field: "total", enableValue: true },
+    { field: 'gold', enableValue: true },
+    { field: 'silver', enableValue: true },
+    { field: 'bronze', enableValue: true },
+    { field: 'total', enableValue: true },
   ])
   const defaultColDef = useMemo<ColDef>(() => {
     return {
@@ -84,8 +84,8 @@ export const AgBasic = () => {
   }>(() => {
     return {
       statusPanels: [
-        { statusPanel: "agTotalAndFilteredRowCountComponent", align: "left" },
-        { statusPanel: "agAggregationComponent" },
+        { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },
+        { statusPanel: 'agAggregationComponent' },
       ],
     }
   }, [])
@@ -110,28 +110,8 @@ export const AgBasic = () => {
     return localeJa
   }, [])
 
-  // const getLocaleText = useCallback((params: GetLocaleTextParams) => {
-  //   switch (params.key) {
-  //     case "thousandSeparator":
-  //       return "."
-  //     case "decimalSeparator":
-  //       return ","
-  //     default:
-  //       if (params.defaultValue) {
-  //         // the &lrm; marker should not be made uppercase
-  //         const val = params.defaultValue.split("&lrm;")
-  //         const newVal = "A+" + val[0].toUpperCase()
-  //         if (val.length > 1) {
-  //           return `${newVal}&lrm;`
-  //         }
-  //         return newVal
-  //       }
-  //       return ""
-  //   }
-  // }, [])
-
   const onGridReady = useCallback((params: GridReadyEvent) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data: IOlympicData[]) => setRowData(data))
   }, [])
@@ -145,7 +125,7 @@ export const AgBasic = () => {
           defaultColDef={defaultColDef}
           sideBar={true}
           statusBar={statusBar}
-          rowGroupPanelShow={"always"}
+          rowGroupPanelShow={'always'}
           pagination={true}
           paginationPageSize={500}
           enableRangeSelection={true}
