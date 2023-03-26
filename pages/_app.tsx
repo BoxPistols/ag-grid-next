@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import type { AppProps } from 'next/app';
-import '@/styles/globals.css';
-import '@/assets/locale.ja.js';
-import { GlobalAppBar } from '@/src/content/GlobalAppBar';
-import { Sidebar } from '@/src/content/SideBar';
+import { useState } from 'react'
+import type { AppProps } from 'next/app'
+import '@/styles/globals.css'
+import '@/assets/locale.ja.js'
+import { GlobalAppBar } from '@/src/content/GlobalAppBar'
+import { Sidebar } from '@/src/content/SideBar'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const handleDrawerToggle = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   return (
     <>
@@ -17,5 +17,5 @@ export default function App({ Component, pageProps }: AppProps) {
       <Sidebar open={open} handleDrawerToggle={handleDrawerToggle} />
       <Component {...pageProps} />
     </>
-  );
+  )
 }

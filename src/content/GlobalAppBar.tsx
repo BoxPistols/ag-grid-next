@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import Skeleton from '@mui/material/Skeleton';
+import * as React from 'react'
+import { useState, useEffect } from 'react'
+import { styled, alpha } from '@mui/material/styles'
+import Skeleton from '@mui/material/Skeleton'
 
 import {
   AppBar,
@@ -13,7 +13,7 @@ import {
   Badge,
   MenuItem,
   Menu,
-} from '@mui/material';
+} from '@mui/material'
 
 import {
   Menu as MenuIcon,
@@ -22,15 +22,20 @@ import {
   Mail as MailIcon,
   Notifications as NotificationsIcon,
   MoreVert as MoreIcon,
-} from '@mui/icons-material';
+} from '@mui/icons-material'
 
-import { blueGrey } from '@mui/material/colors';
+import { blueGrey } from '@mui/material/colors'
 
-type GlobalAppBarProps = {
-  handleDrawerToggle: () => void;
-};
+type NewType = {
+  /**
+   * ダイアログの切り替え処理
+   */
+  handleDrawerToggle: () => void
+}
 
-const primaryOverride = blueGrey[900];
+type GlobalAppBarProps = NewType
+
+const primaryOverride = blueGrey[900]
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -46,7 +51,7 @@ const Search = styled('div')(({ theme }) => ({
     marginLeft: theme.spacing(3),
     width: 'auto',
   },
-}));
+}))
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -56,7 +61,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-}));
+}))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -70,41 +75,41 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       width: '20ch',
     },
   },
-}));
+}))
 
 export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
   // loading
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
-    setLoading(false);
-  }, []);
+    setLoading(false)
+  }, [])
 
   // ----
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-    React.useState<null | HTMLElement>(null);
+    React.useState<null | HTMLElement>(null)
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMenuOpen = Boolean(anchorEl)
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+    setMobileMoreAnchorEl(null)
+  }
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
+    setAnchorEl(null)
+    handleMobileMenuClose()
+  }
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
+    setMobileMoreAnchorEl(event.currentTarget)
+  }
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = 'primary-search-account-menu'
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -124,9 +129,9 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
-  );
+  )
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = 'primary-search-account-menu-mobile'
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -176,7 +181,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
         <p>Profile</p>
       </MenuItem>
     </Menu>
-  );
+  )
 
   return (
     <>
@@ -268,5 +273,5 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
         {renderMenu}
       </Box>
     </>
-  );
-};
+  )
+}

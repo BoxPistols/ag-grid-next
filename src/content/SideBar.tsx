@@ -1,6 +1,5 @@
 // components/Sidebar.js
-import * as React from 'react';
-import { useState } from 'react';
+import * as React from 'react'
 import {
   Drawer,
   List,
@@ -8,9 +7,8 @@ import {
   ListItemIcon,
   ListItemText,
   IconButton,
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { Menu } from '@mui/icons-material';
+} from '@mui/material'
+import { styled } from '@mui/material/styles'
 import {
   Home,
   ShoppingCart,
@@ -19,39 +17,37 @@ import {
   People,
   Info,
   Mail,
-} from '@mui/icons-material';
+} from '@mui/icons-material'
 
 // 新しい型定義を追加
 type SidebarProps = {
-  open: boolean;
-  handleDrawerToggle: () => void;
-};
+  open: boolean
+  handleDrawerToggle: () => void
+}
 
-const drawerWidth = 250;
+const drawerWidth = 250
 
 const DrawerContainer = styled('div')`
   width: ${drawerWidth}px;
   flex-shrink: 0;
-`;
+`
 
 const DrawerPaper = styled('div')`
   width: ${drawerWidth}px;
-`;
+`
 
 const MenuButton = styled(IconButton)`
   margin-right: ${({ theme }) => theme.spacing(2)};
-`;
+`
 
 export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
   const menuItems = [
     { icon: <Home />, text: 'ホーム', href: '/' },
-    { icon: <ShoppingCart />, text: 'ショッピング', href: '/shopping' },
-    { icon: <ListAlt />, text: 'リスト', href: '/list' },
+    { icon: <ListAlt />, text: 'Local API', href: '/get-api' },
     { icon: <Settings />, text: '設定', href: '/settings' },
     { icon: <People />, text: 'ユーザー', href: '/users' },
     { icon: <Info />, text: '情報', href: '/info' },
-    { icon: <Mail />, text: 'お問い合わせ', href: '/contact' },
-  ];
+  ]
 
   return (
     <>
@@ -84,5 +80,5 @@ export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
         </DrawerContainer>
       </Drawer>
     </>
-  );
-};
+  )
+}

@@ -75,7 +75,7 @@ export const localeJa = {
   // Other
   loadingOoo: "読み込み中...",
   loadingError: "エラー",
-  noRowsToShow: "表示する行がありません",
+  noRowsToShow: "表示する行がありません。再読み込みなどしてください",
   enabled: "有効化",
 
   // Menu
