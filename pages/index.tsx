@@ -1,20 +1,20 @@
 // React
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 // Next
-import Head from 'next/head';
+import Head from 'next/head'
 // design
 
 // Chart
 // import ChartBar from "@/src/components/Chart/ChartBar"
-import 'ag-grid-enterprise';
+import 'ag-grid-enterprise'
 // css AgGrid
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
+import 'ag-grid-community/styles/ag-grid.css'
+import 'ag-grid-community/styles/ag-theme-alpine.css'
 // css local
-import styles from '@/styles/Home.module.css';
-import { AgBasic } from '@/src/components/AgGrid/AgBasic';
+import styles from '@/styles/Home.module.css'
+import { AgBasic } from '@/src/components/AgGrid/AgBasic'
 // import CovidDataBasic from "@/src/components/Chart/CovidDataBasic"
-import CovidData from '@/src/components/Chart/CovidData';
+import CovidData from '@/src/components/Chart/CovidData'
 
 const App = () => {
   return (
@@ -33,7 +33,10 @@ const App = () => {
             <h2 className={styles.head_2} style={{ marginTop: 32 }}>
               AgGrid Table (covid19api)
             </h2>
-            <p>covid19apiを通して、シンプルなデータでAgGrid Tableを検証する</p>
+            <p>
+              covid19apiを通して、シンプルなデータでAgGrid
+              Tableを検証する。取得出来ない時はリロードしてください
+            </p>
             <CovidData />
 
             <h2 className={styles.head_2} style={{ marginTop: 32 }}>
@@ -49,7 +52,7 @@ const App = () => {
         {/* </div> */}
       </main>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

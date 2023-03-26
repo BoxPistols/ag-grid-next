@@ -25,6 +25,7 @@ import {
 } from '@mui/icons-material'
 
 import { blueGrey } from '@mui/material/colors'
+import Link from 'next/link'
 
 type NewType = {
   /**
@@ -211,7 +212,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
                 sx={{ display: { xs: 'none', sm: 'block' } }}
               >
                 {/* Title */}
-                React Data Grid
+                <Link href="/">React Data Grid</Link>
               </Typography>
               <Search>
                 <SearchIconWrapper>

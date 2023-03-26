@@ -44,9 +44,9 @@ export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
   const menuItems = [
     { icon: <Home />, text: 'ホーム', href: '/' },
     { icon: <ListAlt />, text: 'Local API', href: '/get-api' },
-    { icon: <Settings />, text: '設定', href: '/settings' },
-    { icon: <People />, text: 'ユーザー', href: '/users' },
-    { icon: <Info />, text: '情報', href: '/info' },
+    { icon: <Settings />, text: '設定' },
+    { icon: <People />, text: 'ユーザー' },
+    { icon: <Info />, text: '情報' },
   ]
 
   return (
