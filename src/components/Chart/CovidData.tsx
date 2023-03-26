@@ -1,14 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { AgGridReact } from 'ag-grid-react'
+import { GridApi } from 'ag-grid-community'
+import TextField from '@mui/material/TextField'
 import { localeJa } from '@/assets/locale.ja'
-
-// type FilterOption =
-//   | 'lessThan'
-//   | 'greaterThan'
-//   | 'equals'
-//   | 'lessThanOrEqual'
-//   | 'greaterThanOrEqual'
-//   | 'inRange'
 
 interface CountryData {
   Country: string
@@ -21,41 +15,37 @@ interface CountryData {
 }
 
 const CovidData = (): JSX.Element => {
-  const [rowData, setRowData] = useState<CountryData[]>([]) // データ
-  const [isDataLoaded, setIsDataLoaded] = useState(false) // データが取得されているかどうか
+  const [rowData, setRowData] = useState<CountryData[]>([])
+  const [isDataLoaded, setIsDataLoaded] = useState(false)
+  const [gridApi, setGridApi] = useState(null)
+  const [columnApi, setColumnApi] = useState(null)
+  // ----- for MUI filter -----
+  const gridApiRef = useRef<GridApi | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
-      // データを取得
       try {
-        const response = await fetch('https://api.covid19api.com/summary') // apiのURLを指定
-        const data = await response.json() // JSON responseをJSONに変換
-        setRowData(data.Countries) // データをセット
-        setIsDataLoaded(true) // データが取得されているかどうか
+        const response = await fetch('https://api.covid19api.com/summary')
+        const data = await response.json()
+        setRowData(data.Countries)
+        setIsDataLoaded(true)
         console.log('get data!!')
       } catch (error) {
-        // errorが発生した場合
-        console.log('get data error...  ' + error)
+        console.log('get data error... ' + error)
       }
     }
-    fetchData() // データを取得
-  }, []) // データを取得した際に実行
+    fetchData()
+  }, [])
 
-  // const numberFilterParams = (type: FilterOption) => { // agNumberColumnFilterのパラメータ
-  //   return {
-  //     filterOptions: [type],
-  //     suppressAndOrCondition: true,
-  //     placeholder: '値を入力',
-  //     comparatorTexts: {
-  //       lessThan: '!!!未満',
-  //       greaterThan: 'より大きい',
-  //       equals: '等しい',
-  //       lessThanOrEqual: '以下',
-  //       greaterThanOrEqual: '以上',
-  //       inRange: '範囲内',
-  //     },
-  //   }
-  // }
+  // ----- for MUI filter -----
+  const onGridReady = (params: any) => {
+    gridApiRef.current = params.api
+  }
+  const filterByCountry = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (gridApiRef.current) {
+      gridApiRef.current.setQuickFilter(event.target.value)
+    }
+  }
 
   const columnDefs = [
     // columnDefs
@@ -117,7 +107,14 @@ const CovidData = (): JSX.Element => {
 
   return (
     <>
-      {isDataLoaded && ( // if data is loaded
+      {/* // ----- for MUI filter ----- */}
+      <TextField
+        label="国名で検索"
+        variant="outlined"
+        onChange={filterByCountry}
+        sx={{ my: 2 }}
+      />
+      {isDataLoaded && (
         <div
           className="ag-theme-alpine"
           style={{ height: '700px', width: '100%' }}
@@ -127,12 +124,12 @@ const CovidData = (): JSX.Element => {
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             localeText={localeText}
-            // add
             sideBar={true}
             enableCharts={true}
             enableRangeSelection={true}
             rowGroupPanelShow={'always'}
             gridOptions={gridOptions}
+            onGridReady={onGridReady}
           />
         </div>
       )}
@@ -141,3 +138,15 @@ const CovidData = (): JSX.Element => {
 }
 
 export default CovidData
+
+/** Docs
+ 与えられたコードはTypeScriptで書かれており、React、Ag-Grid、Material UIコンポーネントを利用して、APIからフェッチした国別のCOVID-19データのテーブルを表示しています。このコードでは、「useEffect」フックを使ってデータを取得し、「useState」を使って取得したデータの状態を「rowData」にセットしています。
+
+国名は、Material UIのTextFieldコンポーネントを使用した検索バーでフィルタリングすることができます。
+
+Ag-Grid Reactコンポーネントは、NewConfirmed、TotalConfirmed、NewDeaths、TotalDeaths、NewRecovered、TotalRecoveredといった複数の列を持つテーブルでデータを表示するために使用されています。テーブルのヘッダーや、ソートやフィルタリングのオプションなどの構成は、columnDefsとdefaultColDefプロパティを使用して変更することができます。
+
+コードでは、useStateを使用してデータの状態とisDataLoadedを管理し、useStateを使用してgridApiとcolumnApiの値も設定しています。Ag-GridReactコンポーネントは、クラス名「ag-theme-alpine」を持つdivの中にラップされ、isDataLoadedを使用して条件付きでレンダリングされています。
+
+コードはきれいなコーディングスタイルに従っており、大きなリファクタリングは必要ありません。しかし、const変数内の各プロパティ、例えばcolumnDefsやgridOptionsについては、より読みやすくするために、より説明的なコメントを書くことができるでしょう。
+*/
