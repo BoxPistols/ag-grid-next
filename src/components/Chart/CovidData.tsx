@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import { GridApi } from 'ag-grid-community'
+import { GridReadyEvent } from 'ag-grid-community'
+
 import TextField from '@mui/material/TextField'
 import { localeJa } from '@/assets/locale.ja'
+import { Autocomplete } from '@mui/material'
 
 interface CountryData {
   Country: string
@@ -17,9 +20,11 @@ interface CountryData {
 const CovidData = (): JSX.Element => {
   const [rowData, setRowData] = useState<CountryData[]>([])
   const [isDataLoaded, setIsDataLoaded] = useState(false)
-  const [gridApi, setGridApi] = useState(null)
-  const [columnApi, setColumnApi] = useState(null)
   // ----- for MUI filter -----
+  const [gridApi, setGridApi] = useState<GridApi | null>(null)
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([])
+  const [allCountries, setAllCountries] = useState<string[]>([])
+
   const gridApiRef = useRef<GridApi | null>(null)
 
   useEffect(() => {
@@ -29,6 +34,10 @@ const CovidData = (): JSX.Element => {
         const data = await response.json()
         setRowData(data.Countries)
         setIsDataLoaded(true)
+        setAllCountries(
+          //複数の国を取得
+          data.Countries.map((country: CountryData) => country.Country)
+        )
         console.log('get data!!')
       } catch (error) {
         console.log('get data error... ' + error)
@@ -38,12 +47,30 @@ const CovidData = (): JSX.Element => {
   }, [])
 
   // ----- for MUI filter -----
-  const onGridReady = (params: any) => {
-    gridApiRef.current = params.api
+  const onGridReady = (event: GridReadyEvent) => {
+    setGridApi(event.api)
   }
-  const filterByCountry = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (gridApiRef.current) {
-      gridApiRef.current.setQuickFilter(event.target.value)
+  const onFirstDataRendered = () => {
+    if (gridApi) {
+      const filterModel = {
+        Country: {
+          filterType: 'set',
+          values: selectedCountries,
+        },
+      }
+      gridApi.setFilterModel(filterModel)
+    }
+  }
+  const filterByCountries = (_: any, selectedCountries: string[]) => {
+    setSelectedCountries(selectedCountries)
+    if (gridApi) {
+      const filterModel = {
+        Country: {
+          filterType: 'set',
+          values: selectedCountries,
+        },
+      }
+      gridApi.setFilterModel(filterModel)
     }
   }
 
@@ -108,11 +135,18 @@ const CovidData = (): JSX.Element => {
   return (
     <>
       {/* // ----- for MUI filter ----- */}
-      <TextField
-        label="国名で検索"
-        variant="outlined"
-        onChange={filterByCountry}
-        sx={{ my: 2 }}
+      <Autocomplete
+        multiple
+        options={allCountries}
+        onChange={filterByCountries}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="国名で検索"
+            variant="outlined"
+            style={{ marginBottom: '16px' }}
+          />
+        )}
       />
       {isDataLoaded && (
         <div
@@ -129,7 +163,9 @@ const CovidData = (): JSX.Element => {
             enableRangeSelection={true}
             rowGroupPanelShow={'always'}
             gridOptions={gridOptions}
+            // filter
             onGridReady={onGridReady}
+            onFirstDataRendered={onFirstDataRendered}
           />
         </div>
       )}
