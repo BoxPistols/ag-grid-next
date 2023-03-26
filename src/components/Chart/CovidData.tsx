@@ -26,6 +26,8 @@ const CovidData = (): JSX.Element => {
   const [allCountries, setAllCountries] = useState<string[]>([])
 
   const gridApiRef = useRef<GridApi | null>(null)
+
+  // Data
   const fetchData = useCallback(async () => {
     try {
       const response = await fetch('https://api.covid19api.com/summary')
@@ -33,7 +35,6 @@ const CovidData = (): JSX.Element => {
       setRowData(data.Countries)
       setIsDataLoaded(true)
       setAllCountries(
-        //複数の国を取得
         data.Countries.map((country: CountryData) => country.Country)
       )
       console.log('get data!!')
@@ -49,17 +50,16 @@ const CovidData = (): JSX.Element => {
   const onGridReady = (event: GridReadyEvent) => {
     setGridApi(event.api)
   }
-  const onFirstDataRendered = () => {
+  const applyFilterModel = (values: string[]) => {
     if (gridApi) {
       const filterModel = {
-        Country: {
-          filterType: 'set',
-          values: selectedCountries,
-        },
+        Country: { filterType: 'set', values: selectedCountries },
       }
       gridApi.setFilterModel(filterModel)
     }
   }
+  const onFirstDataRendered = () => applyFilterModel
+
   const filterByCountries = (_: any, selectedCountries: string[]) => {
     setSelectedCountries(selectedCountries)
     if (gridApi) {
@@ -72,9 +72,14 @@ const CovidData = (): JSX.Element => {
       gridApi.setFilterModel(filterModel)
     }
   }
+  // 選択解除後、再度全表示
+  useEffect(() => {
+    if (gridApi && selectedCountries.length === 0) {
+      gridApi.setFilterModel(null)
+    }
+  }, [gridApi, selectedCountries])
 
   const columnDefs = [
-    // columnDefs
     { headerName: '国名', field: 'Country' },
     {
       headerName: '新規感染者数',
