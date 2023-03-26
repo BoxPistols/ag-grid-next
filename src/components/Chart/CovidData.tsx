@@ -1,6 +1,14 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import { localeJa } from '@/assets/locale.ja'
+
+// type FilterOption =
+//   | 'lessThan'
+//   | 'greaterThan'
+//   | 'equals'
+//   | 'lessThanOrEqual'
+//   | 'greaterThanOrEqual'
+//   | 'inRange'
 
 interface CountryData {
   Country: string
@@ -10,58 +18,52 @@ interface CountryData {
   TotalDeaths: number
   NewRecovered: number
   TotalRecovered: number
-  gridOptions: number
 }
 
-const CovidData: React.FC = () => {
-  const [rowData, setRowData] = useState<CountryData[]>([])
-  // const [filter, setFilter] = useState<{ [key: string]: string }>({})
+const CovidData = (): JSX.Element => {
+  const [rowData, setRowData] = useState<CountryData[]>([]) // データ
+  const [isDataLoaded, setIsDataLoaded] = useState(false) // データが取得されているかどうか
 
   useEffect(() => {
     const fetchData = async () => {
+      // データを取得
       try {
-        const response = await fetch('https://api.covid19api.com/summary')
-        const data = await response.json()
-        setRowData(data.Countries)
+        const response = await fetch('https://api.covid19api.com/summary') // apiのURLを指定
+        const data = await response.json() // JSON responseをJSONに変換
+        setRowData(data.Countries) // データをセット
+        setIsDataLoaded(true) // データが取得されているかどうか
         console.log('get data!!')
       } catch (error) {
+        // errorが発生した場合
         console.log('get data error...  ' + error)
       }
     }
-    fetchData()
-  }, [])
+    fetchData() // データを取得
+  }, []) // データを取得した際に実行
 
-  const numberFilterParams = (type: string) => {
-    return {
-      filterOptions: [
-        'lessThan',
-        'greaterThan',
-        'equals',
-        // `${type}OrGreaterThan`,
-        // `${type}OrLessThan`,
-      ],
-      suppressAndOrCondition: true,
-      // フィルターのプレースホルダーを日本語にする
-      placeholder: '値を入力',
-      // プルダウンメニューのラベルを日本語にする
-      comparatorTexts: {
-        lessThan: '!!!未満',
-        greaterThan: 'より大きい',
-        equals: '等しい',
-        lessThanOrEqual: '以下',
-        greaterThanOrEqual: '以上',
-        inRange: '範囲内',
-      },
-    }
-  }
+  // const numberFilterParams = (type: FilterOption) => { // agNumberColumnFilterのパラメータ
+  //   return {
+  //     filterOptions: [type],
+  //     suppressAndOrCondition: true,
+  //     placeholder: '値を入力',
+  //     comparatorTexts: {
+  //       lessThan: '!!!未満',
+  //       greaterThan: 'より大きい',
+  //       equals: '等しい',
+  //       lessThanOrEqual: '以下',
+  //       greaterThanOrEqual: '以上',
+  //       inRange: '範囲内',
+  //     },
+  //   }
+  // }
 
   const columnDefs = [
+    // columnDefs
     { headerName: '国名', field: 'Country' },
     {
       headerName: '新規感染者数',
       field: 'NewConfirmed',
       filter: 'agNumberColumnFilter',
-      // filterParams: numberFilterParams("lessThanOrEqual"),
       sortable: true,
       suppressAutoSize: true,
     },
@@ -73,63 +75,68 @@ const CovidData: React.FC = () => {
     },
     {
       headerName: '新規死亡者数',
-      filter: 'agNumberColumnFilter',
       field: 'NewDeaths',
+      filter: 'agNumberColumnFilter',
       sortable: true,
     },
     {
       headerName: '累計死亡者数',
-      filter: 'agNumberColumnFilter',
       field: 'TotalDeaths',
+      filter: 'agNumberColumnFilter',
       sortable: true,
     },
     {
       headerName: '新規回復者数',
-      filter: 'agNumberColumnFilter',
       field: 'NewRecovered',
+      filter: 'agNumberColumnFilter',
       sortable: true,
     },
     {
       headerName: '累計回復者数',
-      filter: 'agNumberColumnFilter',
       field: 'TotalRecovered',
+      filter: 'agNumberColumnFilter',
       sortable: true,
     },
   ]
 
   const defaultColDef = {
+    // defaultColDef
     filter: true,
   }
 
-  const localeText = useMemo<{ [key: string]: string }>(() => {
-    return localeJa
-  }, [])
-
-  // const onGridReady = (params: { api: { sizeColumnsToFit: () => void } }) => {
-  //   params.api.sizeColumnsToFit() // 全列の幅を自動調整
-  // }
+  const localeText = {
+    // localeText
+    ...localeJa,
+  }
 
   const gridOptions = {
-    maxColWidth: 200, // 最大列幅を 200 に設定
-    autoSizePadding: 8, // デフォルトのパディング量を 8 に設定
+    // gridOptions
+    maxColWidth: 200, // maxColumnWidth
+    autoSizePadding: 8, // autoSizePadding
   }
+
   return (
-    <AgGridReact
-      columnDefs={columnDefs}
-      rowData={rowData}
-      pagination={true}
-      paginationPageSize={20}
-      defaultColDef={defaultColDef}
-      localeText={localeText}
-      // add
-      sideBar={true}
-      rowGroupPanelShow={'always'}
-      enableRangeSelection={true}
-      enableCharts={true}
-      // statusBar={statusBar}
-      // onGridReady={onGridReady}
-      gridOptions={gridOptions}
-    />
+    <>
+      {isDataLoaded && ( // if data is loaded
+        <div
+          className="ag-theme-alpine"
+          style={{ height: '700px', width: '100%' }}
+        >
+          <AgGridReact
+            rowData={rowData}
+            columnDefs={columnDefs}
+            defaultColDef={defaultColDef}
+            localeText={localeText}
+            // add
+            sideBar={true}
+            enableCharts={true}
+            enableRangeSelection={true}
+            rowGroupPanelShow={'always'}
+            gridOptions={gridOptions}
+          />
+        </div>
+      )}
+    </>
   )
 }
 
