@@ -5,9 +5,8 @@
       "src": "package.json",
       "use": "@vercel/next",
       "when": {
-        "env": {
-          "BUILD_NEXT": "true"
-        }
+        "value": "next",
+        "env": "BUILD_ENV"
       }
     },
     {
@@ -16,16 +15,19 @@
       "config": {
         "distDir": "storybook-static"
       },
-      "routes": [
-        {
-          "src": "/storybook(.*)",
-          "dest": "storybook-static$1"
-        }
-      ],
       "when": {
-        "env": {
-          "BUILD_STORYBOOK": "true"
-        }
+        "value": "storybook",
+        "env": "BUILD_ENV"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "storybook-static/$1",
+      "when": {
+        "value": "storybook",
+        "env": "BUILD_ENV"
       }
     }
   ]
