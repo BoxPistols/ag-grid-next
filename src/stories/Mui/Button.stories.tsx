@@ -11,7 +11,7 @@ export const Basic: ComponentStoryObj<typeof Button> = {
 
 export const Error: ComponentStoryObj<typeof Button> = {
   args: {
-    label: 'エラー',
+    label: 'エラー表示',
     color: 'error',
   },
 }
