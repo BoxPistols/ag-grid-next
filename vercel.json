@@ -1,19 +1,32 @@
 {
   "version": 2,
-  "name": "agrid-mui",
   "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next",
+      "when": {
+        "env": {
+          "BUILD_NEXT": "true"
+        }
+      }
+    },
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "storybook-static"
+      },
+      "routes": [
+        {
+          "src": "/storybook(.*)",
+          "dest": "storybook-static$1"
+        }
+      ],
+      "when": {
+        "env": {
+          "BUILD_STORYBOOK": "true"
+        }
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/storybook-static/$1"
     }
   ]
 }

@@ -23,6 +23,8 @@ module.exports = {
   },
   // for MUI with emotion
   webpackFinal: async (config, { configType }) => {
+    // add custom webpack config for Storybook build
+    config.output.publicPath = '/storybook/';
     config.resolve.alias = {
       ...config.resolve.alias,
       '@emotion/styled': '@emotion/styled/base',
