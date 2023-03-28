@@ -22,7 +22,6 @@ module.exports = {
     builder: 'webpack5',
   },
   // for MUI with emotion
-  // webpackFinal: async (config, { }) => {
   webpackFinal: async (config, { configType }) => {
     // add custom webpack config for Storybook build
     config.output.publicPath = '/storybook-static/';
