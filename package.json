@@ -9,6 +9,7 @@
     "lint": "next lint",
     "export": "next export",
     "storybook": "start-storybook -p 6006",
+    "storybook-start": "storybook start",
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
