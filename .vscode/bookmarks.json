@@ -11,21 +11,6 @@
 			]
 		},
 		{
-			"path": "src/components/Chart/CovidData.tsx",
-			"bookmarks": [
-				{
-					"line": 60,
-					"column": 1,
-					"label": ""
-				},
-				{
-					"line": 108,
-					"column": 23,
-					"label": ""
-				}
-			]
-		},
-		{
 			"path": "pages/layout/index.tsx",
 			"bookmarks": [
 				{
