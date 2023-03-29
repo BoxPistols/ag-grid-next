@@ -9,7 +9,7 @@
     "lint": "next lint",
     "export": "next export",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
