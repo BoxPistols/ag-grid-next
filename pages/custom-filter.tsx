@@ -155,27 +155,30 @@ const Filter = (): JSX.Element => {
   return (
     <>
       <Box p={4}>
-        <Autocomplete
-          multiple
-          options={allCountries}
-          onChange={filterByCountries}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="国名で検索"
-              variant="outlined"
-              style={{ marginBottom: '16px' }}
-            />
-          )}
-        />
-        <Box>
-          <TextField
-            name="min"
-            label="新規感染者数 (最小値)"
-            type="number"
-            onChange={handleNewConfirmedFilterChange}
-            style={{ marginRight: '16px' }}
+        <Box pt={1} display="flex" gap={1}>
+          <Autocomplete
+            multiple
+            options={allCountries}
+            onChange={filterByCountries}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="国名で検索"
+                variant="outlined"
+                style={{ marginBottom: '16px' }}
+                sx={{ minWidth: '30vw' }}
+              />
+            )}
           />
+          <Box>
+            <TextField
+              name="min"
+              label="新規感染者数 (最小値)"
+              type="number"
+              onChange={handleNewConfirmedFilterChange}
+              style={{ marginRight: '16px' }}
+            />
+          </Box>
         </Box>
         <div
           className="ag-theme-alpine"
