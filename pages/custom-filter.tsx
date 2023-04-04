@@ -25,10 +25,10 @@ const Filter = (): JSX.Element => {
   const [gridApi, setGridApi] = useState<GridApi | null>(null)
   const [selectedCountries, setSelectedCountries] = useState<string[]>([])
   const [allCountries, setAllCountries] = useState<string[]>([])
+
   const [newConfirmedFilter, setNewConfirmedFilter] = useState<{
     min: number | null
-    max: number | null
-  }>({ min: null, max: null })
+  }>({ min: null })
 
   const localeText = {
     ...localeJa,
@@ -54,16 +54,6 @@ const Filter = (): JSX.Element => {
   const onGridReady = (event: any) => {
     setGridApi(event.api)
   }
-
-  const applyFilterModel = (values: string[]) => {
-    if (gridApi) {
-      const filterModel = {
-        Country: { filterType: 'set', values: selectedCountries },
-      }
-      gridApi.setFilterModel(filterModel)
-    }
-  }
-  const onFirstDataRendered = () => applyFilterModel
 
   const filterByCountries = (_: any, selectedCountries: string[]) => {
     setSelectedCountries(selectedCountries)
@@ -95,18 +85,27 @@ const Filter = (): JSX.Element => {
     }))
 
     if (gridApi) {
-      const filterModel = {
-        NewConfirmed: {
-          filterType: 'number',
-          // type: 'between',
-          type: 'greaterThanOrEqual',
-          filter: newConfirmedFilter.min,
-          filterTo: newConfirmedFilter.max,
-        },
+      const filterModel = gridApi.getFilterModel()
+      filterModel['NewConfirmed'] = {
+        filterType: 'number',
+        type: 'greaterThanOrEqual',
+        filter: newConfirmedFilter.min,
       }
       gridApi.setFilterModel(filterModel)
     }
   }
+
+  useEffect(() => {
+    if (gridApi && newConfirmedFilter.min !== null) {
+      const filterModel = gridApi.getFilterModel()
+      filterModel['NewConfirmed'] = {
+        filterType: 'number',
+        type: 'greaterThanOrEqual',
+        filter: newConfirmedFilter.min,
+      }
+      gridApi.setFilterModel(filterModel)
+    }
+  }, [gridApi, newConfirmedFilter])
 
   const columnDefs = [
     { headerName: '国名', field: 'Country' },
@@ -177,12 +176,6 @@ const Filter = (): JSX.Element => {
             onChange={handleNewConfirmedFilterChange}
             style={{ marginRight: '16px' }}
           />
-          <TextField
-            name="max"
-            label="新規感染者数 (最大値)"
-            type="number"
-            onChange={handleNewConfirmedFilterChange}
-          />
         </Box>
         <div
           className="ag-theme-alpine"
@@ -198,7 +191,6 @@ const Filter = (): JSX.Element => {
             enableCharts={true}
             enableRangeSelection={true}
             rowGroupPanelShow={'always'}
-            onFirstDataRendered={onFirstDataRendered}
           />
         </div>
       </Box>
