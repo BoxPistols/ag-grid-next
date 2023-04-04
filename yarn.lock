@@ -2,6 +2,42 @@
 # yarn lockfile v1
 
 
+"@ag-grid-community/all-modules@^27.3.0":
+  version "27.3.0"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/all-modules/-/all-modules-27.3.0.tgz#5f3883c7316112e2b7145b2b5987bc581980d900"
+  integrity sha512-yH5jH+sJ6niUR5N4MiyOYDUnldcjCRwpDeL82JyGh7/rsxACH026KcxEO+7Gk22CnSeMwUZidGorU2Dj/Na8rg==
+  dependencies:
+    "@ag-grid-community/client-side-row-model" "~27.3.0"
+    "@ag-grid-community/core" "~27.3.0"
+    "@ag-grid-community/csv-export" "~27.3.0"
+    "@ag-grid-community/infinite-row-model" "~27.3.0"
+
+"@ag-grid-community/client-side-row-model@~27.3.0":
+  version "27.3.0"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/client-side-row-model/-/client-side-row-model-27.3.0.tgz#5dec1f59d85e9682c46a3b695d31ecd7a4df5cbd"
+  integrity sha512-t6ggg/SvESsGEC75z62rD/zFeo2DZCKFxw5e0qKweHR106CjBUNMlnfXIIG81qOSXUWGnbbWlrijBbKbyt8aTA==
+  dependencies:
+    "@ag-grid-community/core" "~27.3.0"
+
+"@ag-grid-community/core@~27.3.0":
+  version "27.3.0"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/core/-/core-27.3.0.tgz#04599cff5c35d26b970153ec3db66b945f053e57"
+  integrity sha512-77/bE2KdFlFI/ywEP46aSspXtgBteY/OPQyzU/lWqYrG2wC6cLfPSUB60t9e0FiqElwM/Vdcjz0TAjRwhZOPkw==
+
+"@ag-grid-community/csv-export@~27.3.0":
+  version "27.3.0"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/csv-export/-/csv-export-27.3.0.tgz#6b2fc9090180aa00696b8f1aaf1f0b31f43088b0"
+  integrity sha512-7pR05jEqTdUPAoqEMHxXGh6j0KViGmqLa4uwKmriKzfZOvwlq6umjDmXvPFCRCWfswb9KOqS1iZlGhcWufKApQ==
+  dependencies:
+    "@ag-grid-community/core" "~27.3.0"
+
+"@ag-grid-community/infinite-row-model@~27.3.0":
+  version "27.3.0"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/infinite-row-model/-/infinite-row-model-27.3.0.tgz#055539af2ecfa999885e52c8fe089ae6da0ba1b3"
+  integrity sha512-hUWQ6YdRrNCDAvSn1bbxvnklIqPx8QGXMjmLVfR47+Gp1aoA1i9OxtA39SlzsZnRqDxZE5eKgwb5uy2+C4vKhA==
+  dependencies:
+    "@ag-grid-community/core" "~27.3.0"
+
 "@ampproject/remapping@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"
@@ -3285,7 +3321,7 @@ address@^1.0.1:
   resolved "https://registry.yarnpkg.com/address/-/address-1.2.2.tgz#2b5248dac5485a6390532c6a517fda2e3faac89e"
   integrity sha512-4B/qKCfeE/ODUaAUpSwfzazo5x29WD4r3vXiWsB7I2mSDAihwEqKO+g8GELZUQSSAo5e1XTYh3ZVfLyxBc12nA==
 
-ag-grid-community@^29.1.0:
+ag-grid-community@^29.2.0:
   version "29.2.0"
   resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-29.2.0.tgz#ce29357464f50bbafa00aaa2adbd8b275310f44d"
   integrity sha512-1xP1fpM8gXp2ALzBLONejZNul9hA3//ddszSlhq79QZ1FskQ1Z7E2WvvFeCeLJTJZrfhQkT1q1LO5DGfGeiBvg==
@@ -3295,7 +3331,7 @@ ag-grid-enterprise@^29.1.0:
   resolved "https://registry.yarnpkg.com/ag-grid-enterprise/-/ag-grid-enterprise-29.2.0.tgz#32130d8e96dcceaa69ebc4e92774f2ff722cb927"
   integrity sha512-LYwX6Z8O2FBzN2c0N+h9mMX5hQQMpBzZ+ztmTiboxIVE6DB1MrpfVy0A8YfR31JtzLaj/lRjCqsx6BcnbvkSmA==
 
-ag-grid-react@^29.1.0:
+ag-grid-react@^29.2.0:
   version "29.2.0"
   resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-29.2.0.tgz#512f41e98cfd7ec291832aae8601f76b52c366c8"
   integrity sha512-FZEWhbe51KNkvu+MohGXxXixIJdakJrs5XDdJ/h1jqmCX9WZzHNT2OvoYHIXB7gcKKj5pf47YJB8eaEqsRlpbg==
