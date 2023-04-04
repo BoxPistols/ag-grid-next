@@ -43,6 +43,7 @@ const MenuButton = styled(IconButton)`
 export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
   const menuItems = [
     { icon: <Home />, text: 'ホーム', href: '/' },
+    { icon: <ListAlt />, text: 'カスタムフィルター', href: '/custom-filter' },
     { icon: <ListAlt />, text: 'Local API', href: '/get-api' },
     { icon: <Settings />, text: '設定' },
     { icon: <People />, text: 'ユーザー' },
