@@ -25,11 +25,10 @@ const Filter = (): JSX.Element => {
   const [gridApi, setGridApi] = useState<GridApi | null>(null)
   const [selectedCountries, setSelectedCountries] = useState<string[]>([])
   const [allCountries, setAllCountries] = useState<string[]>([])
-  const [newConfirmedFilter, setNewConfirmedFilter] = useState({
-    filterType: null,
-    filter: null,
-    filterTo: null,
-  })
+  const [newConfirmedFilter, setNewConfirmedFilter] = useState<{
+    min: number | null
+    max: number | null
+  }>({ min: null, max: null })
 
   const localeText = {
     ...localeJa,
@@ -88,26 +87,26 @@ const Filter = (): JSX.Element => {
   const handleNewConfirmedFilterChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const { name, value } = event.target
-    setNewConfirmedFilter((prevFilter) => ({ ...prevFilter, [name]: value }))
-  }
+    setNewConfirmedFilter((prevFilter) => ({
+      ...prevFilter,
+      [event.target.name]: event.target.value
+        ? parseInt(event.target.value)
+        : null,
+    }))
 
-  const applyNewConfirmedFilter = () => {
     if (gridApi) {
       const filterModel = {
         NewConfirmed: {
           filterType: 'number',
-          filter: newConfirmedFilter.filter,
-          filterTo: newConfirmedFilter.filterTo,
+          // type: 'between',
+          type: 'greaterThanOrEqual',
+          filter: newConfirmedFilter.min,
+          filterTo: newConfirmedFilter.max,
         },
       }
       gridApi.setFilterModel(filterModel)
     }
   }
-
-  useEffect(() => {
-    applyNewConfirmedFilter()
-  }, [newConfirmedFilter, gridApi])
 
   const columnDefs = [
     { headerName: '国名', field: 'Country' },
@@ -172,14 +171,14 @@ const Filter = (): JSX.Element => {
         />
         <Box>
           <TextField
-            name="filter"
+            name="min"
             label="新規感染者数 (最小値)"
             type="number"
             onChange={handleNewConfirmedFilterChange}
             style={{ marginRight: '16px' }}
           />
           <TextField
-            name="filterTo"
+            name="max"
             label="新規感染者数 (最大値)"
             type="number"
             onChange={handleNewConfirmedFilterChange}
@@ -194,7 +193,6 @@ const Filter = (): JSX.Element => {
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             onGridReady={onGridReady}
-            // add
             localeText={localeText}
             sideBar={true}
             enableCharts={true}
