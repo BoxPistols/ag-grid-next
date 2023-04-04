@@ -24,6 +24,21 @@
 					"label": ""
 				}
 			]
+		},
+		{
+			"path": "pages/custom-filter.tsx",
+			"bookmarks": [
+				{
+					"line": 26,
+					"column": 22,
+					"label": ""
+				},
+				{
+					"line": 74,
+					"column": 29,
+					"label": ""
+				}
+			]
 		}
 	]
 }
