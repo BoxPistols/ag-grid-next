@@ -10,7 +10,17 @@
     "export": "next export",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -s public",
-    "storyshots": "jest --config ./jest.config.storyshots.js"
+    "test": "jest --config ./jest.config.storyshots.js"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json",
+      "node"
+    ]
   },
   "resolutions": {
     "react-test-renderer": "18.1.0"
@@ -22,6 +32,7 @@
     "@jest/expect": "^29.5.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.14",
+    "@storybook/addon-docs": "^7.0.2",
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -55,8 +66,10 @@
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.0",
     "babel-loader": "^8.3.0",
+    "babel-plugin-remove-export-keywords": "^1.6.22",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
+    "spdx-license-ids": "^3.0.13",
     "ts-jest": "^29.1.0"
   }
 }

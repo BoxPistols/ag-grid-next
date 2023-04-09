@@ -10,5 +10,5 @@ module.exports = {
     ],
     "@babel/preset-react",
   ],
-  plugins: ["@babel/plugin-transform-runtime"],
+  plugins: ["@babel/plugin-transform-runtime", "remove-export-keywords"],
 };
