@@ -1,5 +1,6 @@
 module.exports = {
   presets: [
+    "@babel/preset-react",
     [
       "@babel/preset-env",
       {
@@ -8,7 +9,6 @@ module.exports = {
         },
       },
     ],
-    "@babel/preset-react",
   ],
-  plugins: ["@babel/plugin-transform-runtime", "remove-export-keywords"],
+  plugins: ["@babel/plugin-transform-runtime", "remove-export-keywords", "@mdx-js/babel-plugin-mdx"],
 };
