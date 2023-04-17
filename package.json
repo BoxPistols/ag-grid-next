@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -s public"
+    "export": "next export"
   },
   "dependencies": {
     "@ag-grid-community/all-modules": "^27.3.0",
@@ -36,15 +34,5 @@
     "@babel/core": "^7.21.3",
     "@emotion/cache": "^11.10.5",
     "@mui/styles": "^5.11.13",
-    "@storybook/addon-a11y": "^7.0.5",
-    "@storybook/addon-actions": "^7.0.5",
-    "@storybook/addon-essentials": "^7.0.5",
-    "@storybook/addon-links": "^7.0.5",
-    "@storybook/addon-mdx-gfm": "^7.0.5",
-    "@storybook/nextjs": "^7.0.5",
-    "@storybook/react": "^7.0.5",
-    "babel-loader": "^8.3.0",
-    "eslint-plugin-storybook": "^0.6.11",
-    "storybook": "^7.0.5"
   }
 }
