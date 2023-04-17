@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@ag-grid-community/all-modules": "^27.3.0",
@@ -36,14 +36,14 @@
     "@babel/core": "^7.21.3",
     "@emotion/cache": "^11.10.5",
     "@mui/styles": "^5.11.13",
-    "@storybook/addon-a11y": "^6.5.16",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/builder-webpack5": "^6.5.16",
-    "@storybook/manager-webpack5": "^6.5.16",
-    "@storybook/react": "^6.5.16",
-    "babel-loader": "^8.3.0"
+    "@storybook/addon-essentials": "^7.0.5",
+    "@storybook/addon-interactions": "^7.0.5",
+    "@storybook/addon-links": "^7.0.5",
+    "@storybook/blocks": "^7.0.5",
+    "@storybook/nextjs": "^7.0.5",
+    "@storybook/react": "^7.0.5",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "eslint-plugin-storybook": "^0.6.11",
+    "storybook": "^7.0.5"
   }
 }
