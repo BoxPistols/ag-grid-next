@@ -2,5 +2,7 @@
   "python.linting.lintOnSave": false,
   "eslint.run": "onSave",
   "markdownlint.run": "onSave",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "preview.preview.lineHeight": 1.4,
+  "markdown.preview.lineHeight": 1.4
 }
