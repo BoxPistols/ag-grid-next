@@ -1,36 +1,38 @@
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-a11y',
+
     // Setting Webpack5 base
-    '@storybook/builder-webpack5',
-    '@storybook/manager-webpack5',
+    // '@storybook/builder-webpack5', '@storybook/manager-webpack5',
+
     // Add Post CSS
-    {
-      name: '@storybook/addon-postcss',
-      options: {
-        postcssLoaderOptions: {
-          implementation: require('postcss'),
-        },
-      },
-    },
+    // {
+    //   name: '@storybook/addon-postcss',
+    //   options: {
+    //     postcssLoaderOptions: {
+    //       implementation: require('postcss')
+    //     }
+    //   }
+    // }, '@storybook/addon-mdx-gfm'
   ],
-  // Setting Webpack5 base
-  core: {
-    builder: 'webpack5',
-  },
   // for MUI with emotion
-  webpackFinal: async (config, { configType }) => {
+  webpackFinal: async (config, {
+    configType
+  }) => {
     // add custom webpack config for Storybook build
     // config.output.publicPath = '/storybook-static/';
     config.output.publicPath = '/';
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@emotion/styled': '@emotion/styled/base',
+      '@emotion/styled': '@emotion/styled/base'
     };
     return config;
   },
-  framework: '@storybook/react',
+  framework: {
+    name: '@storybook/nextjs',
+    options: {}
+  },
+  docs: {
+    autodocs: true
+  }
 };
