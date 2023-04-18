@@ -14,6 +14,9 @@ const theme = createTheme({
     primary: {
       main: '#234',
     },
+    secondary: {
+      main: '#2c4',
+    },
     success: {
       main: '#4caf50',
     },
@@ -33,6 +36,9 @@ const theme = createTheme({
     },
     h6: {
       fontWeight: 500,
+    },
+    button: {
+      fontWeight: 400,
     },
   },
 })
