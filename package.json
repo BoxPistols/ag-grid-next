@@ -9,7 +9,8 @@
     "lint": "next lint",
     "export": "next export",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "sb-test": "test-storybook"
   },
   "dependencies": {
     "@ag-grid-community/all-modules": "^27.3.0",
@@ -42,6 +43,7 @@
     "@storybook/blocks": "^7.0.5",
     "@storybook/nextjs": "^7.0.5",
     "@storybook/react": "^7.0.5",
+    "@storybook/test-runner": "^0.10.0",
     "@storybook/testing-library": "^0.0.14-next.2",
     "eslint-plugin-storybook": "^0.6.11",
     "storybook": "^7.0.5"
