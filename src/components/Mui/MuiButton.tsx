@@ -4,6 +4,10 @@ import {
   ButtonProps as MuiButtonProps,
 } from '@mui/material'
 
+// import { ThemeProvider } from '@mui/material/styles'
+// import theme from '../../lib/theme'
+import SbProvider from './SbProvider'
+
 export interface ButtonProps extends Omit<MuiButtonProps, 'size'> {
   size?: 'small' | 'medium' | 'large'
   label?: string
@@ -18,8 +22,11 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <MuiButton variant={variant} size={size} {...props}>
-      {label}
-    </MuiButton>
+    <SbProvider>
+      {/* <ThemeProvider theme={theme}> */}
+      <MuiButton variant={variant} size={size} {...props}>
+        {label}
+      </MuiButton>
+    </SbProvider>
   )
 }

@@ -209,6 +209,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
                 variant="h6"
                 noWrap
                 component="div"
+                color="grey.100"
                 sx={{ display: { xs: 'none', sm: 'block' } }}
               >
                 {/* Title */}
