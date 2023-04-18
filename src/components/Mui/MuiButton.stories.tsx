@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from './MuiButton'
+// mock
+import SendIcon from '@mui/icons-material/Send'
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta: Meta<typeof Button> = {
@@ -68,6 +70,14 @@ export const Error: Story = {
   args: {
     label: 'Button',
     color: 'error',
+    variant: 'contained',
+  },
+}
+
+export const EndIcon: Story = {
+  args: {
+    label: 'Button',
+    endIcon: <SendIcon />,
     variant: 'contained',
   },
 }
