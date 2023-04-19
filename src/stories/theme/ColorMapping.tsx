@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { Palette, PaletteColor, CommonColors } from '@mui/material/styles'
 
-const ColorMapping: React.FC = () => {
+const ColorMapping = () => {
   const theme = useTheme()
 
   const colorGroups = Object.keys(theme.palette).filter(
