@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import IconList from './IconList'
 
 const meta: Meta<typeof IconList> = {
-  title: 'Mui/IconList',
+  title: 'Catalog/IconList',
   component: IconList,
   tags: ['autodocs'],
   argTypes: {},
