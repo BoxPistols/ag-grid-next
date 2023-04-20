@@ -15,10 +15,10 @@ body {
 body {
   background-color: #fff;
   min-height: 100vh;
-  color: #234;
+  color: #25282c;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 4vh 8vw;
+  /* padding: 4vh 8vw; */
 }
 
 a {

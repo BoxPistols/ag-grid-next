@@ -73,7 +73,10 @@ export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
               {menuItems.map((item, index) => (
                 <ListItem key={index} component="a" href={item.href}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
+                  <ListItemText
+                    primary={item.text}
+                    sx={{ '.MuiTypography-root': { fontSize: 15 } }}
+                  />
                 </ListItem>
               ))}
             </List>

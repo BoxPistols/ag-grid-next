@@ -159,7 +159,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
       </MenuItem>
       <MenuItem>
         <IconButton
-          size="large"
+          // size="large"
           aria-label="show 17 new notifications"
           color="inherit"
         >
@@ -171,7 +171,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
-          size="large"
+          // size="large"
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
@@ -196,7 +196,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
           <AppBar position="static" sx={{ backgroundColor: primaryOverride }}>
             <Toolbar>
               <IconButton
-                size="large"
+                // size="large"
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"
@@ -206,7 +206,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
                 <MenuIcon />
               </IconButton>
               <Typography
-                variant="h6"
+                variant="h1"
                 noWrap
                 component="div"
                 color="grey.100"
@@ -227,7 +227,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <IconButton
-                  size="large"
+                  // size="large"
                   aria-label="show 4 new mails"
                   color="inherit"
                 >
@@ -236,7 +236,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
                   </Badge>
                 </IconButton>
                 <IconButton
-                  size="large"
+                  // size="large"
                   aria-label="show 17 new notifications"
                   color="inherit"
                 >
@@ -245,7 +245,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
                   </Badge>
                 </IconButton>
                 <IconButton
-                  size="large"
+                  // size="large"
                   edge="end"
                   aria-label="account of current user"
                   aria-controls={menuId}
@@ -258,7 +258,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
               </Box>
               <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
-                  size="large"
+                  // size="large"
                   aria-label="show more"
                   aria-controls={mobileMenuId}
                   aria-haspopup="true"
