@@ -1,18 +1,45 @@
 // theme.ts
 import { createTheme } from '@mui/material/styles'
 
+// ===== BreakPoint =====
+// for breakpoint
+export const breakpoints = {
+  values: {
+    xs: 0,
+    sm: 480,
+    md: 768,
+    lg: 1280,
+    xl: 1536,
+    xxl: 1920,
+  },
+}
+
+// ===== Typography =====
 const baseFontSize = 16
 
+const fontWeight = {
+  normal: 400,
+  medium: 500,
+  bold: 700,
+}
+const lineHeight = {
+  small: 1.5,
+  medium: 1.75,
+  large: 2.0,
+}
+
 const theme = createTheme({
+  // default: lg
   breakpoints: {
     values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
+      xs: breakpoints.values.xs,
+      sm: breakpoints.values.sm,
+      md: breakpoints.values.md,
+      lg: breakpoints.values.lg,
+      xl: breakpoints.values.xl,
     },
   },
+
   palette: {
     primary: {
       main: '#1978b0',
@@ -24,38 +51,64 @@ const theme = createTheme({
       main: '#2f9927',
     },
   },
+
   typography: {
-    fontFamily: ' "Helvatica", "Arial", sans-serif ',
     // すべての Typography コンポーネントで適用されるデフォルトのテキストカラーを設定します。
     allVariants: {
-      color: 'rgba(0, 0, 0, 0.85)', // 任意のカラー値を指定します。
+      color: 'rgba(20, 30, 10, 0.8)',
+      lineHeight: 1.5,
+      fontFamily:
+        '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "BIZ UDPゴシック", "Noto Sans JP", Helvetica, Arial, sans-serif !important',
+      textTransform: 'inherit',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'antialiased',
     },
     fontSize: baseFontSize,
     h1: {
-      fontWeight: 700,
+      fontWeight: fontWeight.bold,
       fontSize: baseFontSize * 2,
+      lineHeight: 1.35,
     },
     h2: {
-      fontWeight: 700,
+      fontWeight: fontWeight.bold,
       fontSize: baseFontSize * 1.75,
+      lineHeight: 1.35,
     },
     h3: {
-      fontWeight: 700,
+      fontWeight: fontWeight.bold,
       fontSize: baseFontSize * 1.5,
+      lineHeight: 1.35,
     },
     h4: {
-      fontWeight: 700,
+      fontWeight: fontWeight.bold,
       fontSize: baseFontSize * 1.25,
+      lineHeight: 1.35,
     },
     h5: {
-      fontWeight: 500,
+      fontWeight: fontWeight.bold,
       fontSize: baseFontSize * 1.1,
+      lineHeight: 1.35,
     },
     h6: {
-      fontWeight: 500,
+      fontWeight: fontWeight.bold,
       fontSize: baseFontSize * 1,
+      lineHeight: 1.35,
+    },
+    subtitle1: {
+      lineHeight: 1.4,
+      fontSize: baseFontSize * 0.85,
+    },
+    subtitle2: {
+      lineHeight: 1.4,
+      fontSize: baseFontSize * 0.75,
+    },
+    caption: {
+      lineHeight: 1.4,
+      fontSize: baseFontSize * 0.85,
+    },
+    overline: {
+      lineHeight: 1.4,
+      fontSize: baseFontSize * 0.75,
     },
     button: {
       fontWeight: 400,
