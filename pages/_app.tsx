@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { AppProps } from 'next/app'
 import '@/styles/globals.css'
-import '@/assets/locale.ja.js'
+import '@/src/assets/locale.ja.js'
 import { GlobalAppBar } from '@/src/content/GlobalAppBar'
 import { Sidebar } from '@/src/content/SideBar'
 import { ThemeProvider } from '@mui/material/styles'

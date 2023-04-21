@@ -4,9 +4,10 @@ import { GridApi } from 'ag-grid-community'
 import { GridReadyEvent } from 'ag-grid-community'
 
 import TextField from '@mui/material/TextField'
-import { localeJa } from '@/assets/locale.ja'
+import { localeJa } from '@/src/assets/locale.ja'
 import { Autocomplete } from '@mui/material'
 
+// TypeScript
 interface CountryData {
   Country: string
   NewConfirmed: number
@@ -161,6 +162,7 @@ const CovidData = (): JSX.Element => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
+            // lang
             localeText={localeText}
             sideBar={true}
             enableCharts={true}
