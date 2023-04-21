@@ -156,7 +156,7 @@ const CovidData = (): JSX.Element => {
       {isDataLoaded && (
         <div
           className="ag-theme-alpine"
-          style={{ height: '700px', width: '100%' }}
+          style={{ height: '600px', width: '100%' }}
         >
           <AgGridReact
             rowData={rowData}

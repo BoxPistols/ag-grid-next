@@ -11,13 +11,12 @@ import {
 import { styled } from '@mui/material/styles'
 import {
   Home,
-  ShoppingCart,
-  ListAlt,
   Settings,
-  People,
   Info,
-  Mail,
+  TableChart,
+  DataObject,
 } from '@mui/icons-material'
+import { grey } from '@mui/material/colors'
 
 // 新しい型定義を追加
 type SidebarProps = {
@@ -43,10 +42,13 @@ const MenuButton = styled(IconButton)`
 export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
   const menuItems = [
     { icon: <Home />, text: 'ホーム', href: '/' },
-    { icon: <ListAlt />, text: 'カスタムフィルター', href: '/custom-filter' },
-    { icon: <ListAlt />, text: 'Local API', href: '/get-api' },
+    {
+      icon: <TableChart />,
+      text: 'カスタムフィルター',
+      href: '/custom-filter',
+    },
+    { icon: <DataObject />, text: 'Local API', href: '/get-api' },
     { icon: <Settings />, text: '設定' },
-    { icon: <People />, text: 'ユーザー' },
     { icon: <Info />, text: '情報' },
   ]
 
@@ -71,7 +73,20 @@ export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
           <DrawerPaper>
             <List>
               {menuItems.map((item, index) => (
-                <ListItem key={index} component="a" href={item.href}>
+                <ListItem
+                  key={index}
+                  component="a"
+                  href={item.href}
+                  sx={{
+                    '&:hover': {
+                      backgroundColor: grey[300],
+                    },
+                    '.MuiListItemIcon-root': {
+                      minWidth: 'auto',
+                      mr: 1,
+                    },
+                  }}
+                >
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText
                     primary={item.text}

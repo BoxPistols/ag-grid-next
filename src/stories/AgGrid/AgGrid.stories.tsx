@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { AgBasic } from '../../../src/components/AgGrid/AgBasic'
 // FIXME: lang設定
+import { AgBasic } from '../../../src/components/AgGrid/AgBasic'
 // import CovidData from '../../../src/components/AgGrid/CovidData'
 const meta: Meta<typeof AgBasic> = {
   title: 'AgGrid/Stories/AgBasic',
@@ -20,9 +20,11 @@ export const Default = {
     return (
       <div style={containerStyle}>
         <div style={gridStyle} className="ag-theme-alpine">
-          {/* <CovidData /> */}
           <AgBasic />
         </div>
+        {/* <div style={gridStyle} className="ag-theme-alpine">
+          <CovidData />
+        </div> */}
       </div>
     )
   },

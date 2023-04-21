@@ -83,7 +83,10 @@ export const AgBasic = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={gridStyle} className="ag-theme-alpine">
+      <div
+        className="ag-theme-alpine"
+        style={{ height: '600px', width: '100%' }}
+      >
         <AgGridReact<IOlympicData>
           rowData={rowData}
           columnDefs={columnDefs}

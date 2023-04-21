@@ -39,6 +39,16 @@
 					"label": ""
 				}
 			]
+		},
+		{
+			"path": "src/content/SideBar.tsx",
+			"bookmarks": [
+				{
+					"line": 81,
+					"column": 48,
+					"label": ""
+				}
+			]
 		}
 	]
 }
