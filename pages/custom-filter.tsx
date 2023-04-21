@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import { GridApi } from 'ag-grid-community'
-import { localeJa } from '@/assets/locale.ja'
+import { localeJa } from '@/src/assets/locale.ja'
 
 import 'ag-grid-enterprise'
 import 'ag-grid-community/styles/ag-grid.css'

@@ -1,5 +1,5 @@
 // React
-import { useState, useEffect } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 // Next
 import Head from 'next/head'
 // design
@@ -14,7 +14,7 @@ import 'ag-grid-community/styles/ag-theme-alpine.css'
 import styles from '@/styles/Home.module.css'
 import { AgBasic } from '@/src/components/AgGrid/AgBasic'
 // import CovidDataBasic from "@/src/components/Chart/CovidDataBasic"
-import CovidData from '@/src/components/Chart/CovidData'
+import CovidData from '@/src/components/AgGrid/CovidData'
 
 const App = () => {
   return (

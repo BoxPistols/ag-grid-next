@@ -1,36 +1,21 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react'
-// import { render } from "react-dom"
+import React, { useEffect, useCallback, useMemo, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
-// import "ag-grid-enterprise"
-// import "ag-grid-community/styles/ag-grid.css"
-// import "ag-grid-community/styles/ag-theme-alpine.css"
-import {
-  ColDef,
-  ColGroupDef,
-  GetLocaleTextParams,
-  Grid,
-  // GridOptions,
-  GridReadyEvent,
-  ICellRendererComp,
-  ICellRendererParams,
-  SideBarDef,
-  StatusPanelDef,
-  // applicationLocaleService,
-} from 'ag-grid-community'
-import { IOlympicData } from './interfaces'
 
-// import { AG_GRID_LOCALE_EN } from "@/assets/locale.en"
-import { localeJa } from '@/assets/locale.ja'
-// var GridOptions = {
-//   localeText: [{ localeJa }],
-// }
+import { ColDef, GridReadyEvent, StatusPanelDef } from 'ag-grid-community'
+import { IOlympicData } from './interfaces'
+// import { localeEn } from '@/src/assets/locale.en'
+// import { localeJa } from '@/src/assets/locale.ja'
+import { localeJa } from '../../assets/locale.ja'
+// Lang Storybook
+// TODO: 日本語と英語を切替えられるようにする
+// const localeText = { ...localeEn, ...localeJa }
+const localeText = { ...localeJa }
 
 export const AgBasic = () => {
   const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), [])
   const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), [])
   const [rowData, setRowData] = useState<IOlympicData[]>()
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([
-    // this row just shows the row index, doesn't use any data from the row
     // {
     //   headerName: "#",
     //   cellRenderer: null,
@@ -90,27 +75,7 @@ export const AgBasic = () => {
     }
   }, [])
 
-  // const getLocaleText = (params: GetLocaleTextParams) => {
-  //   // return [localeJa]
-  //   Object.keys(localeJa).forEach(function (key) {
-  //     if (key === "thousandSeparator" || key === "decimalSeparator") {
-  //       return
-  //     }
-  //     return localeJa
-  //   })
-  // }
-
-  // const getLocaleText = (params: GetLocaleTextParams) => {
-  //   params: localeJa
-  // }
-
-  const localeText = useMemo<{
-    [key: string]: string
-  }>(() => {
-    return localeJa
-  }, [])
-
-  const onGridReady = useCallback((params: GridReadyEvent) => {
+  const onGridReady = useCallback(() => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data: IOlympicData[]) => setRowData(data))
@@ -123,6 +88,7 @@ export const AgBasic = () => {
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
+          localeText={localeText} // lang
           sideBar={true}
           statusBar={statusBar}
           rowGroupPanelShow={'always'}
@@ -130,10 +96,7 @@ export const AgBasic = () => {
           paginationPageSize={500}
           enableRangeSelection={true}
           enableCharts={true}
-          // getLocaleText={getLocaleText}
-          localeText={localeText}
           onGridReady={onGridReady}
-          // gridOptions={GridOptions}
         ></AgGridReact>
       </div>
     </div>

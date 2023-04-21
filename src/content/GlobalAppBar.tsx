@@ -193,7 +193,7 @@ export const GlobalAppBar = ({ handleDrawerToggle }: GlobalAppBarProps) => {
             <Skeleton variant="rectangular" width={0} height={0} />
           </>
         ) : (
-          <AppBar position="static" sx={{ backgroundColor: primaryOverride }}>
+          <AppBar position="sticky" sx={{ backgroundColor: primaryOverride }}>
             <Toolbar>
               <IconButton
                 // size="large"
