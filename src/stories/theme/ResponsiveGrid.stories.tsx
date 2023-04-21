@@ -5,17 +5,45 @@ import Typography from '@mui/material/Typography'
 const ResponsiveGridStory: Meta = {
   title: 'Catalog/Grid',
   component: ResponsiveGrid,
-  tags: ['autodocs'],
-  // argTypes: {},
   argTypes: {
     spacing: {
       options: [1, 2, 3, 4, 8, 16, 24, 32],
-      control: {
-        type: 'select',
-      },
+      control: { type: 'select' },
       defaultValue: 4,
+      table: { category: 'gap' },
+    },
+    xs: {
+      options: [1, 2, 3, 4, 6, 12],
+      control: { type: 'select' },
+      defaultValue: 12,
+      table: { category: 'breakpoint' },
+    },
+    sm: {
+      options: [1, 2, 3, 4, 6, 12],
+      control: { type: 'select' },
+      defaultValue: 6,
+      table: { category: 'breakpoint' },
+    },
+    md: {
+      options: [1, 2, 3, 4, 6, 12],
+      control: { type: 'select' },
+      defaultValue: 4,
+      table: { category: 'breakpoint' },
+    },
+    lg: {
+      options: [1, 2, 3, 4, 6, 12],
+      control: { type: 'select' },
+      defaultValue: 3,
+      table: { category: 'breakpoint' },
+    },
+    xl: {
+      options: [1, 2, 3, 4, 6, 12],
+      control: { type: 'select' },
+      defaultValue: 2,
+      table: { category: 'breakpoint' },
     },
   },
+  argTypesOrder: ['spacing', 'xs', 'sm', 'md', 'lg', 'xl'],
 }
 
 export default ResponsiveGridStory
