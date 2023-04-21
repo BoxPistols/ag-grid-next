@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { AgBasic } from '../../../src/components/AgGrid/AgBasic'
 // FIXME: lang設定
-// import CovidData from '../../../src/components/AgGrid/CovidData'
+import { AgBasic } from '../../../src/components/AgGrid/AgBasic'
+import CovidData from '../../../src/components/AgGrid/CovidData'
+import Typography from '@mui/material/Typography'
 const meta: Meta<typeof AgBasic> = {
   title: 'AgGrid/Stories/AgBasic',
   component: AgBasic,
-  // tags: ['autodocs'],
+  tags: ['autodocs'],
   argTypes: {},
 }
 
@@ -18,9 +19,23 @@ const gridStyle = { height: '100%', width: '100%' }
 export const Default = {
   render: () => {
     return (
-      <div style={containerStyle}>
-        <div style={gridStyle} className="ag-theme-alpine">
-          {/* <CovidData /> */}
+      <div>
+        <div
+          style={{ ...gridStyle, padding: '0px 24px' }}
+          className="ag-theme-alpine"
+        >
+          <Typography variant="h2" color="initial" mt={4} gutterBottom>
+            AgGrid Table (covid19api)
+          </Typography>
+          <CovidData />
+        </div>
+        <div
+          style={{ ...gridStyle, padding: '0px 24px' }}
+          className="ag-theme-alpine"
+        >
+          <Typography variant="h2" color="initial" mt={4} gutterBottom>
+            AgGrid Table (olympic-winners)
+          </Typography>
           <AgBasic />
         </div>
       </div>
