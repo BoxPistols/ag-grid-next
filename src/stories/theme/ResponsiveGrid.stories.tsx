@@ -1,13 +1,15 @@
 import { Meta } from '@storybook/react'
 import { ResponsiveGrid } from './ResponsiveGrid'
 import Typography from '@mui/material/Typography'
+import { Box } from '@mui/material'
 
 const ResponsiveGridStory: Meta = {
   title: 'Catalog/Grid',
   component: ResponsiveGrid,
+  tags: ['autodocs'],
   argTypes: {
     spacing: {
-      options: [1, 2, 3, 4, 8, 16, 24, 32],
+      options: [1, 2, 3, 4, 5, 6, 7, 8],
       control: { type: 'select' },
       defaultValue: 4,
       table: { category: 'gap' },
@@ -43,7 +45,6 @@ const ResponsiveGridStory: Meta = {
       table: { category: 'breakpoint' },
     },
   },
-  argTypesOrder: ['spacing', 'xs', 'sm', 'md', 'lg', 'xl'],
 }
 
 export default ResponsiveGridStory
