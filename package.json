@@ -10,7 +10,8 @@
     "export": "next export",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "sb-test": "test-storybook"
+    "sb-test": "test-storybook",
+    "sb-watch": "test-storybook --watch"
   },
   "dependencies": {
     "@ag-grid-community/all-modules": "^27.3.0",

@@ -96,6 +96,7 @@ const TypographyList = () => {
 
   return (
     <>
+      {/* Typography */}
       <div>
         {typographyVariantsHeading.map(({ variant, note }) => (
           <Box key={variant} sx={{ marginBottom: 2 }}>
@@ -111,7 +112,6 @@ const TypographyList = () => {
       </div>
 
       <Divider sx={{ my: 3 }} />
-
       <div>
         {typographyVariants.map(({ variant, note }) => (
           <Box key={variant} sx={{ marginBottom: 2 }}>
