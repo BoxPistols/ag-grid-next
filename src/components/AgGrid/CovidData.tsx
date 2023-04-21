@@ -4,7 +4,8 @@ import { GridApi } from 'ag-grid-community'
 import { GridReadyEvent } from 'ag-grid-community'
 
 import TextField from '@mui/material/TextField'
-import { localeJa } from '@/src/assets/locale.ja'
+// import { localeJa } from '@/src/assets/locale.ja'
+import { localeJa } from '../../assets/locale.ja'
 import { Autocomplete } from '@mui/material'
 
 // TypeScript
