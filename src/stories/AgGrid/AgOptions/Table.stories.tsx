@@ -1,11 +1,10 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import Table from './Table'
 import { TableType } from './Table.types'
+import { Typography } from '@mui/material'
 
 // define sane defaults that can be spread as a base for every story
 const defaultArgs: TableType = {
-  isDark: false,
   pagination: true,
   perPage: 15,
   rowData: [],
@@ -15,64 +14,46 @@ const defaultArgs: TableType = {
   sortable: false,
 }
 
-export default {
-  title: 'Ag-Grid/Table',
+const meta: Meta<typeof Table> = {
+  title: 'Stories/AgGrid/TableTest',
   component: Table,
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof Table>
-
-const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />
-export const Primary = Template.bind({})
-
-Primary.args = {
-  ...defaultArgs,
-  isDark: false,
-  rowData: [
-    { make: 'Toyota', model: 'Celica', price: 35000, type: 'sedan' },
-    { make: 'Nissan', model: 'KDH', price: 32000, type: 'van' },
-    { make: 'KIA', model: 'Sorento', price: 72000, type: 'jeep' },
-  ],
-  columnDefs: [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' },
-    { field: 'type' },
-  ],
-  sortable: true,
-  resizable: true,
-  filter: true,
 }
 
-const carPrice = (value: number) => {
-  return { color: value > 50000 ? '#FF5733' : '#00E676' }
+export default meta
+type Story = StoryObj<typeof Table>
+
+// Simple
+export const SimpleTable = {
+  args: {
+    ...defaultArgs,
+    rowData: [
+      { make: 'Toyota', model: 'Celica', price: 35000, type: 'sedan' },
+      { make: 'Nissan', model: 'KDH', price: 32000, type: 'van' },
+      { make: 'KIA', model: 'Sorento', price: 72000, type: 'jeep' },
+    ],
+    columnDefs: [
+      { field: 'make' },
+      { field: 'model' },
+      { field: 'price' },
+      { field: 'type' },
+    ],
+    sortable: true,
+    resizable: true,
+    filter: true,
+  },
+  render: (args: JSX.IntrinsicAttributes & TableType) => (
+    <>
+      <Typography variant="body1" color="initial">
+        データ件数検証
+      </Typography>
+      <Table {...args} />
+    </>
+  ),
 }
 
-export const CustomCellRender = Template.bind({})
-CustomCellRender.args = {
-  ...defaultArgs,
-  rowData: [
-    { make: 'Toyota', model: 'Celica', price: 35000, type: 'sedan' },
-    { make: 'Nissan', model: 'KDH', price: 32000, type: 'van' },
-    { make: 'KIA', model: 'Sorento', price: 72000, type: 'jeep' },
-  ],
-  columnDefs: [
-    { field: 'make' },
-    { field: 'model' },
-    {
-      field: 'price',
-      cellStyle: (params: any) => {
-        return carPrice(params.value)
-      },
-    },
-  ],
-}
-
-export const NoData = Template.bind({})
-NoData.args = {
-  ...defaultArgs,
-}
-
-// This function will generate lots of data, so that you can see how the table behaves when populated with many rows
+// この関数は大量のデータを生成するため、多くの行が入力されたときにテーブルがどのように動作するかを確認できます
 function getData() {
   let data = []
   for (let x = 0; x < 150; x++) {
@@ -86,14 +67,48 @@ function getData() {
   return data
 }
 
-export const LotsOfData = Template.bind({})
-LotsOfData.args = {
-  ...defaultArgs,
-  columnDefs: [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' },
-    { field: 'type' },
-  ],
-  rowData: getData(),
+export const AddDatas = {
+  args: {
+    ...defaultArgs,
+    columnDefs: [
+      { field: 'make' },
+      { field: 'model' },
+      { field: 'price' },
+      { field: 'type' },
+    ],
+    rowData: getData(),
+  },
+}
+
+// Custom UI
+const carPrice = (value: number) => {
+  return { color: value > 50000 ? '#FF5733' : '#00E676' }
+}
+
+export const CustomCellRender = {
+  args: {
+    ...defaultArgs,
+    rowData: [
+      { make: 'Toyota', model: 'Celica', price: 35000, type: 'sedan' },
+      { make: 'Nissan', model: 'KDH', price: 32000, type: 'van' },
+      { make: 'KIA', model: 'Sorento', price: 72000, type: 'jeep' },
+    ],
+    columnDefs: [
+      { field: 'make' },
+      { field: 'model' },
+      {
+        field: 'price',
+        cellStyle: (params: any) => {
+          return carPrice(params.value)
+        },
+      },
+    ],
+  },
+}
+
+// データ無し
+export const NoData = {
+  args: {
+    ...defaultArgs,
+  },
 }

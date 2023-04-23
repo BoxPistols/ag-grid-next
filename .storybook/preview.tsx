@@ -86,7 +86,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Mui', 'AgGrid'],
+        order: ['Stories', 'Mui'],
       },
     },
   },

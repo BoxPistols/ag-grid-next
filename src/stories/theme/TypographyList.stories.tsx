@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react'
 import TypographyList from './TypographyList'
 
 const TypographyListStory: Meta = {
-  title: 'Catalog/TypographyList',
+  title: 'Stories/TypographyList',
   component: TypographyList,
 }
 

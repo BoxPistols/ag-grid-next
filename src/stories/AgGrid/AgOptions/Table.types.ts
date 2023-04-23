@@ -8,7 +8,6 @@ export type row = {
 }
 
 export interface TableType {
-  isDark?: boolean
   pagination?: boolean
   perPage?: number
   rowData?: Array<row>
