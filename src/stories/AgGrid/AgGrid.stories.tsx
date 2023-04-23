@@ -4,7 +4,7 @@ import { AgBasic } from '../../../src/components/AgGrid/AgBasic'
 import CovidData from '../../../src/components/AgGrid/CovidData'
 import Typography from '@mui/material/Typography'
 const meta: Meta<typeof AgBasic> = {
-  title: 'AgGrid/Stories/AgBasic',
+  title: 'Stories/AgGrid/AsyncAPI',
   component: AgBasic,
   tags: ['autodocs'],
   argTypes: {},

@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import { Box } from '@mui/material'
 
 const ResponsiveGridStory: Meta = {
-  title: 'Catalog/Grid',
+  title: 'Stories/Grid',
   component: ResponsiveGrid,
   tags: ['autodocs'],
   argTypes: {

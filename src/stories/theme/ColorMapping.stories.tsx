@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react'
 import ColorMapping from './ColorMapping'
 
 const ColorMappingStory: Meta = {
-  title: 'Catalog/ColorMapping',
+  title: 'Stories/ColorMapping',
   component: ColorMapping,
 }
 
