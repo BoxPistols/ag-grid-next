@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'
-import { Box, TextField, Button } from '@mui/material'
+import { Box, TextField, Button, Typography } from '@mui/material'
 import { ColDef } from 'ag-grid-community'
 
 const ApiTextFieldUpload = () => {
@@ -38,7 +38,11 @@ const ApiTextFieldUpload = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      {' '}
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Typography variant="body1" color="initial">
+          sample: https://jsonplaceholder.typicode.com/users
+        </Typography>
+      </Box>
       <TextField
         label="API URL"
         value={url}
