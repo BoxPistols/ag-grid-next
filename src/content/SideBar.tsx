@@ -42,6 +42,12 @@ const MenuButton = styled(IconButton)`
 export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
   const menuItems = [
     { icon: <Home />, text: 'ホーム', href: '/' },
+    // TODO: Nest
+    {
+      icon: <TableChart />,
+      text: 'Data import',
+      href: '/table/file-upload',
+    },
     {
       icon: <TableChart />,
       text: 'カスタムフィルター',

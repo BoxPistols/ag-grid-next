@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography'
 const meta: Meta<typeof AgBasic> = {
   title: 'Stories/AgGrid/AsyncAPI',
   component: AgBasic,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
+  tags: [],
   argTypes: {},
 }
 

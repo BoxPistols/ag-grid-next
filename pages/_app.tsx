@@ -7,6 +7,11 @@ import { Sidebar } from '@/src/content/SideBar'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/src/lib/theme'
 
+// AgGrid
+import 'ag-grid-enterprise'
+import 'ag-grid-community/styles/ag-grid.css'
+import 'ag-grid-community/styles/ag-theme-alpine.css'
+
 export default function App({ Component, pageProps }: AppProps) {
   const [open, setOpen] = useState(false)
   const handleDrawerToggle = () => {
