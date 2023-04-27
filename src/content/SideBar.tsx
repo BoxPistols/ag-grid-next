@@ -45,7 +45,7 @@ export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
     // TODO: Nest
     {
       icon: <TableChart />,
-      text: 'Data import',
+      text: 'データインポート',
       href: '/table/file-upload',
     },
     {
@@ -53,9 +53,14 @@ export const Sidebar = ({ open, handleDrawerToggle }: SidebarProps) => {
       text: 'カスタムフィルター',
       href: '/custom-filter',
     },
-    { icon: <DataObject />, text: 'Local API', href: '/get-api' },
-    { icon: <Settings />, text: '設定' },
-    { icon: <Info />, text: '情報' },
+    {
+      icon: <TableChart />,
+      text: 'レコードイベント',
+      href: '/table/record',
+    },
+    { icon: <DataObject />, text: 'Next.js Local APIテスト', href: '/get-api' },
+    //   { icon: <Settings />, text: '設定' },
+    //   { icon: <Info />, text: '情報' },
   ]
 
   return (

@@ -11,43 +11,41 @@ const FileUpload = () => {
   return (
     <>
       <Container sx={{ maxWidth: '1280px' }}>
-        <Container sx={{ maxWidth: '1280px' }}>
-          <Box sx={{ mb: 4, mt: 4 }}>
-            <Typography variant="h5" gutterBottom>
-              ファイル選択CSVファイルアップロード
-            </Typography>
-            <CsvUploader />
-          </Box>
+        <Box sx={{ mb: 4, mt: 4 }}>
+          <Typography variant="h5" gutterBottom>
+            ファイル選択CSVファイルアップロード
+          </Typography>
+          <CsvUploader />
+        </Box>
 
-          <Divider sx={{ mt: 1 }} />
+        <Divider sx={{ mt: 1 }} />
 
-          <Box sx={{ mb: 4, mt: 3 }}>
-            <Typography variant="h5" gutterBottom>
-              Drag&Dropエリア CSVファイルアップロード
-            </Typography>
-            <DragAndDropUploader />
-          </Box>
+        <Box sx={{ mb: 4, mt: 3 }}>
+          <Typography variant="h5" gutterBottom>
+            Drag&Dropエリア CSVファイルアップロード
+          </Typography>
+          <DragAndDropUploader />
+        </Box>
 
-          <Divider sx={{ mt: 1 }} />
+        <Divider sx={{ mt: 1 }} />
 
-          <Box sx={{ mb: 4, mt: 3 }}>
-            <Typography variant="h5" gutterBottom>
-              Tableダイレクト Drag&Drop CSVファイルアップロード
-            </Typography>
-            <DragTable />
-          </Box>
+        <Box sx={{ mb: 4, mt: 3 }}>
+          <Typography variant="h5" gutterBottom>
+            Tableダイレクト Drag&Drop CSVファイルアップロード
+          </Typography>
+          <DragTable />
+        </Box>
 
-          <Divider sx={{ mt: 1 }} />
+        <Divider sx={{ mt: 1 }} />
 
-          <Box sx={{ mb: 4, mt: 4 }}>
-            <Typography variant="h5" gutterBottom>
-              Data API Call
-            </Typography>
-            <ApiTextFieldUpload />
-          </Box>
+        <Box sx={{ mb: 4, mt: 4 }}>
+          <Typography variant="h5" gutterBottom>
+            Data API Call
+          </Typography>
+          <ApiTextFieldUpload />
+        </Box>
 
-          <Divider sx={{ mt: 1 }} />
-        </Container>
+        <Divider sx={{ mt: 1 }} />
       </Container>
     </>
   )
