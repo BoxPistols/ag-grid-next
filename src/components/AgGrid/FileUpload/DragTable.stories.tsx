@@ -6,6 +6,14 @@ const meta: Meta<typeof DragTable> = {
   component: DragTable,
   //   tags: ['autodocs'],
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <>
+        <h2>Tableダイレクト Drag&Drop CSVファイルアップロード</h2>
+        <Story />
+      </>
+    ),
+  ],
 }
 
 export default meta

@@ -9,6 +9,14 @@ const meta: Meta<typeof DragAndDropUploader> = {
   //   tags: ['autodocs'],
   tags: [],
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <>
+        <h2>Drag&Dropエリア CSVファイルアップロード</h2>
+        <Story />
+      </>
+    ),
+  ],
 }
 
 export default meta
