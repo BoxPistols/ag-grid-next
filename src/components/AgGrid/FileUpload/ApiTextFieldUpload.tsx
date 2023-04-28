@@ -38,25 +38,34 @@ const ApiTextFieldUpload = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography variant="body1" color="initial">
-          sample: https://jsonplaceholder.typicode.com/users
+      <Box sx={{ myWidth: 2 }}>
+        <Typography variant="caption" color="initial">
+          Set API Sample: <br />
+          https://jsonplaceholder.typicode.com/users <br />
+          https://www.ag-grid.com/example-assets/olympic-winners.json
         </Typography>
       </Box>
-      <TextField
-        label="API URL"
-        value={url}
-        onChange={(event) => setUrl(event.target.value)}
-        sx={{ width: '100%', marginBottom: '16px' }}
-      />{' '}
-      {error && (
-        <Box sx={{ color: 'error.main', marginBottom: '16px' }}>{error}</Box>
-      )}{' '}
-      <Button variant="outlined" onClick={handleLoadData} sx={{ mb: 2 }}>
-        {' '}
-        Load Data{' '}
-      </Button>{' '}
-      <div className="ag-theme-alpine" style={{ height: 240, width: '100%' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'rows', my: 2 }}>
+        <TextField
+          label="API URL"
+          value={url}
+          size="small"
+          onChange={(event) => setUrl(event.target.value)}
+          sx={{ width: '100%', mr: 2 }}
+        />
+        {error && (
+          <Box sx={{ color: 'error.main', marginBottom: '16px' }}>{error}</Box>
+        )}
+        <Button
+          variant="contained"
+          onClick={handleLoadData}
+          size="small"
+          sx={{ whiteSpace: 'nowrap', minWidth: 200 }}
+        >
+          Load Data
+        </Button>
+      </Box>
+      <div className="ag-theme-alpine" style={{ height: 400, width: '100%' }}>
         {' '}
         <AgGridReact
           columnDefs={columnDefs}

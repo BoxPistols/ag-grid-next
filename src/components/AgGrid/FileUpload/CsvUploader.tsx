@@ -68,7 +68,7 @@ const CsvUploader = () => {
       </Box>
       <div
         className="ag-theme-alpine"
-        style={{ height: '200px', width: '100%' }}
+        style={{ height: '500px', width: '100%' }}
       >
         <AgGridReact columnDefs={columnDefs} rowData={rowData} />
       </div>
