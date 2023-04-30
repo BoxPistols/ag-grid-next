@@ -4,7 +4,7 @@ import '@/styles/globals.css'
 import '@/src/assets/locale.ja.js'
 // import { GlobalAppBar } from '@/src/content/GlobalAppBar'
 import { AppBarHeader } from '@/src/content/AppBar'
-import { Sidebar } from '@/src/content/SideBar'
+// import { Sidebar } from '@/src/content/SideBar'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/src/lib/theme'
 
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         {/* <GlobalAppBar handleDrawerToggle={handleDrawerToggle} /> */}
         <AppBarHeader>
-          <Sidebar open={open} handleDrawerToggle={handleDrawerToggle} />
+          {/* <Sidebar open={open} handleDrawerToggle={handleDrawerToggle} /> */}
           <Component {...pageProps} />
         </AppBarHeader>
       </ThemeProvider>

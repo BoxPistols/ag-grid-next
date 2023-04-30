@@ -1,35 +1,38 @@
 import * as React from 'react'
 import {
-  // useTheme,
   Box,
   Toolbar,
   List,
-  CssBaseline,
   Typography,
-  Divider,
   IconButton,
   ListItem,
-  ListItemButton,
   ListItemIcon,
   ListItemText,
+  //   ListItemButton,
 } from '@mui/material'
 
 import {
   // Menu as MenuIcon,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
-  MoveToInbox as InboxIcon,
-  Mail as MailIcon,
 } from '@mui/icons-material'
 import { AppBar, Drawer, DrawerHeader } from './AppBarUtil'
+import { Home, TableChart, DataObject } from '@mui/icons-material'
+import Link from 'next/link'
 
+import { blueGrey } from '@mui/material/colors'
+import { grey } from '@mui/material/colors'
+
+const primaryOverride = blueGrey[900]
+
+// Type
 type Props = {
   children: React.ReactNode
 }
 
 export const AppBarHeader = ({ children }: Props) => {
   // const theme = useTheme();
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(true)
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -39,10 +42,44 @@ export const AppBarHeader = ({ children }: Props) => {
     setOpen(false)
   }
 
+  const menuItems = [
+    { icon: <Home />, text: 'ホーム', href: '/' },
+    // TODO: Nest
+    {
+      icon: <TableChart />,
+      text: 'データインポート',
+      href: '/table/file-upload',
+    },
+    {
+      icon: <TableChart />,
+      text: 'カスタムフィルター',
+      href: '/custom-filter',
+    },
+    {
+      icon: <TableChart />,
+      text: 'レコードイベント',
+      href: '/table/record',
+    },
+    { icon: <DataObject />, text: 'Next.js Local APIテスト', href: '/get-api' },
+    //   { icon: <Settings />, text: '設定' },
+    //   { icon: <Info />, text: '情報' },
+  ]
+
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed">
+      {/* <CssBaseline /> */}
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: primaryOverride,
+          height: 48,
+          display: 'flex',
+          justifyContent: 'center',
+          a: {
+            cursor: 'pointer',
+          },
+        }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -55,71 +92,61 @@ export const AppBarHeader = ({ children }: Props) => {
           >
             {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-          <Typography variant="h6" noWrap component="div" color="white">
-            Mini variant drawer
+          <Typography variant="h4" noWrap component="div" color="white">
+            <Link href="/">React Data Grid MUI</Link>
           </Typography>
         </Toolbar>
       </AppBar>
+
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader></DrawerHeader>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
+        <List sx={{ py: 1, mt: 6 }}>
+          {menuItems.map((item, index) => (
+            <ListItem
+              key={index}
+              component={Link}
+              href={item.href}
+              sx={{
+                minHeight: 32,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2,
+
+                '&:hover': {
+                  backgroundColor: grey[300],
+                },
+                '.MuiListItemIcon-root': {
+                  minWidth: 'auto',
+                  mr: 1,
+                },
+              }}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 1 : 'auto',
+                  justifyContent: 'center',
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.text}
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
+                  display: open ? 'block' : 'none',
+                  opacity: open ? 1 : 0,
+                  '.MuiTypography-root': {
+                    fontSize: 13,
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  },
                 }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
+              />
             </ListItem>
           ))}
         </List>
       </Drawer>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        {/* 
-        <DrawerHeader />
-        <MockText />
-        <MockText /> 
-        */}
+      <Box component="main" sx={{ flexGrow: 1, py: 8, px: 3 }}>
         {children}
       </Box>
     </Box>
