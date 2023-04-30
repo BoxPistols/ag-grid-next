@@ -13,6 +13,7 @@ import {
   DialogActions,
   CircularProgress,
   Container,
+  Paper,
 } from '@mui/material'
 // import 'ag-grid-community/styles/ag-grid.css'
 // import 'ag-grid-community/styles/ag-theme-alpine.css'
@@ -157,17 +158,13 @@ const PickUpRecortdTable = () => {
                     gap={3}
                   >
                     <Box display="flex" flexDirection="column" gap={3}>
-                      <Box>
-                        <Typography variant="body1" color="text.secondary">
-                          ID: {row.id}
-                        </Typography>
-                      </Box>
-                      <Box>
-                        <Typography variant="h6" color="text.secondary">
-                          Make: {row.make}
-                        </Typography>
-                      </Box>
+                      <Typography variant="h6" color="text.secondary">
+                        ID: {row.id}
+                        <br />
+                        Make: {row.make}
+                      </Typography>
                     </Box>
+
                     <Box display="flex">
                       <Box
                         display="flex"
@@ -176,46 +173,61 @@ const PickUpRecortdTable = () => {
                         flexDirection="column"
                         m={3}
                       >
-                        <Box
-                          display="flex"
-                          flexDirection="column"
-                          justifyContent="center"
-                          alignItems="center"
-                          m={3}
+                        <Paper
+                          sx={{
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            m: 2,
+                            p: 2,
+                          }}
                         >
+                          <CircularProgress
+                            variant="determinate"
+                            value={66}
+                            sx={{
+                              minWidth: 40,
+                              display: 'block',
+                              width: '100%',
+                              mx: 'auto',
+                              my: 1,
+                            }}
+                          />
+
                           <Box>
-                            <CircularProgress
-                              variant="determinate"
-                              value={66}
-                              // sx={{ minWidth: 60, mb: 4 }}
-                            />
-                          </Box>
-                          <Box>
-                            <Typography variant="h5" color="text.secondary">
-                              Model: {row.model}
+                            <Typography variant="body2" color="text.secondary">
+                              Model: <br /> {row.model}
                             </Typography>
                           </Box>
-                        </Box>
-                        <Box
-                          display="flex"
-                          flexDirection="column"
-                          justifyContent="center"
-                          alignItems="center"
-                          m={3}
+                        </Paper>
+                        <Paper
+                          sx={{
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            m: 2,
+                            p: 2,
+                          }}
                         >
+                          <CircularProgress
+                            variant="determinate"
+                            value={66}
+                            sx={{
+                              minWidth: 40,
+                              display: 'block',
+                              width: '100%',
+                              mx: 'auto',
+                              my: 1,
+                            }}
+                          />
+
                           <Box>
-                            <CircularProgress
-                              variant="determinate"
-                              value={90}
-                              // sx={{ minWidth: 60, mb: 4 }}
-                            />
-                          </Box>
-                          <Box>
-                            <Typography variant="h5" color="text.secondary">
-                              Price: {row.price}
+                            <Typography variant="body2" color="text.secondary">
+                              Price: <br />
+                              {row.price}
                             </Typography>
                           </Box>
-                        </Box>
+                        </Paper>
                       </Box>
                     </Box>
                   </Box>
