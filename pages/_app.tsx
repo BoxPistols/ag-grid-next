@@ -2,8 +2,9 @@ import { useState } from 'react'
 import type { AppProps } from 'next/app'
 import '@/styles/globals.css'
 import '@/src/assets/locale.ja.js'
-import { GlobalAppBar } from '@/src/content/GlobalAppBar'
-import { Sidebar } from '@/src/content/SideBar'
+// import { GlobalAppBar } from '@/src/content/GlobalAppBar'
+import { AppBarHeader } from '@/src/content/AppBar'
+// import { Sidebar } from '@/src/content/SideBar'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/src/lib/theme'
 
@@ -21,9 +22,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <GlobalAppBar handleDrawerToggle={handleDrawerToggle} />
-        <Sidebar open={open} handleDrawerToggle={handleDrawerToggle} />
-        <Component {...pageProps} />
+        {/* <GlobalAppBar handleDrawerToggle={handleDrawerToggle} /> */}
+        <AppBarHeader>
+          {/* <Sidebar open={open} handleDrawerToggle={handleDrawerToggle} /> */}
+          <Component {...pageProps} />
+        </AppBarHeader>
       </ThemeProvider>
     </>
   )
