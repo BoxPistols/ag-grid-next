@@ -50,6 +50,18 @@ const theme = createTheme({
     success: {
       main: '#2f9927',
     },
+
+    // TODO: Add here
+    // primary: {
+    //   main: '#2196f3', // Primary main color (e.g., blue)
+    //   light: '#6ec6ff', // Primary light color (e.g., light blue)
+    //   dark: '#0069c0', // Primary dark color (e.g., dark blue)
+    // },
+    // secondary: {
+    //   main: '#f50057', // Secondary main color (e.g., pink)
+    //   light: '#ff4081', // Secondary light color (e.g., light pink)
+    //   dark: '#c51162', // Secondary dark color (e.g., dark pink)
+    // },
   },
 
   typography: {
