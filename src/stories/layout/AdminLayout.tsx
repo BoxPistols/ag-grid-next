@@ -10,7 +10,7 @@ type AdminLayoutProps = {
   numberOfColumns: number
 }
 
-const AdminLayout = ({ numberOfCards, numberOfColumns }: AdminLayoutProps) => {
+const AdminLayout = ({ numberOfCards }: AdminLayoutProps) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Header />

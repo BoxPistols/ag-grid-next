@@ -22,7 +22,7 @@ export default {
   title: 'Admin/AdminLayout',
   component: Template,
   argTypes: {
-    numberOfCards: { control: { type: 'range', min: 3, max: 12, step: 1 } },
-    numberOfColumns: { control: { type: 'range', min: 1, max: 10, step: 1 } },
+    numberOfCards: { control: { type: 'range', min: 0, max: 12, step: 1 } },
+    numberOfColumns: { control: { type: 'range', min: 0, max: 12, step: 1 } },
   },
 } as Meta
