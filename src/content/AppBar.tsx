@@ -67,7 +67,6 @@ export const AppBarHeader = ({ children }: Props) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      {/* <CssBaseline /> */}
       <AppBar
         position="fixed"
         sx={{

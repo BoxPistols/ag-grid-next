@@ -5,13 +5,18 @@ import Header from './Header'
 import Sidebar from './Sidebar'
 import Content from './Content'
 
-const AdminLayout: React.FC = () => {
+type AdminLayoutProps = {
+  numberOfCards: number
+  numberOfColumns: number
+}
+
+const AdminLayout = ({ numberOfCards }: AdminLayoutProps) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Header />
       <Box sx={{ display: 'flex', flexGrow: 1 }}>
         <Sidebar />
-        <Content />
+        <Content numberOfCards={numberOfCards} columnDefs={[]} rowData={[]} />
       </Box>
     </Box>
   )
