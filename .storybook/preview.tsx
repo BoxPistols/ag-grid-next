@@ -1,7 +1,9 @@
 import React from 'react'
 import { Preview } from '@storybook/react'
 import { ThemeProvider } from '@mui/system'
+import { CssBaseline } from '@mui/material'
 import theme from '../src/lib/theme'
+import './sb.css'
 
 // AgGrid共有スタイル
 import 'ag-grid-community/styles/ag-grid.css'
@@ -93,6 +95,7 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Story />
       </ThemeProvider>
     ),
