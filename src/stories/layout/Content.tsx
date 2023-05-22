@@ -5,8 +5,9 @@ import { Container, Typography, Box } from '@mui/material'
 import CardGrid from './CardGrid'
 import AgGridTable from './AgGridTable'
 
-type Props = {
+type ContentProps = {
   numberOfCards: number
+  numberOfColumns: number
   columnDefs: any[]
   rowData: any[]
 }
@@ -16,14 +17,22 @@ const ContentContainer = styled(Container)`
   padding: 2rem;
 `
 
-const Content: React.FC<Props> = ({ numberOfCards, columnDefs, rowData }) => {
+const Content = ({
+  numberOfCards,
+  numberOfColumns,
+  columnDefs,
+  rowData,
+}: ContentProps) => {
   return (
     <ContentContainer>
       <Typography variant="h4" component="h2" gutterBottom>
         Content Area
       </Typography>
       <Box mb={4}>
-        <CardGrid numberOfCards={numberOfCards} />
+        <CardGrid
+          numberOfCards={numberOfCards}
+          numberOfColumns={numberOfColumns}
+        />
       </Box>
       <AgGridTable columnDefs={columnDefs} rowData={rowData} />
     </ContentContainer>

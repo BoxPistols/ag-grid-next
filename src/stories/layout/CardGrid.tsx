@@ -2,15 +2,16 @@
 import React from 'react'
 import { Grid, Card, CardContent, Typography } from '@mui/material'
 
-type Props = {
+type CardGridProps = {
   numberOfCards: number
+  numberOfColumns: number
 }
 
-const CardGrid = ({ numberOfCards }: Props) => {
+const CardGrid = ({ numberOfCards, numberOfColumns }: CardGridProps) => {
   return (
     <Grid container spacing={2}>
-      {[...Array(numberOfCards)].map((_some, index) => (
-        <Grid key={index} item xs={12} sm={6} md={4}>
+      {[...Array(numberOfCards)].map((_, index) => (
+        <Grid key={index} item xs={12 / numberOfColumns}>
           <Card elevation={2}>
             <CardContent>
               <Typography variant="h6">Card {index + 1}</Typography>
