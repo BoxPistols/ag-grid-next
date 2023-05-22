@@ -1,22 +1,20 @@
 // Header.tsx
 import React from 'react'
-import { styled } from '@mui/system'
-import { AppBar, Toolbar, Typography } from '@mui/material'
+import { AppBar, Toolbar, Typography, useTheme } from '@mui/material'
 
-const StyledAppBar = styled(AppBar)`
-  flex-grow: 1;
-`
-
-const Header: React.FC = () => {
+export const Header = () => {
+  const theme = useTheme()
   return (
-    <StyledAppBar position="static" sx={{ maxHeight: 80 }}>
+    <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" component="div">
+        <Typography
+          variant="h6"
+          component="div"
+          color={theme.palette.primary.contrastText}
+        >
           Admin Dashboard
         </Typography>
       </Toolbar>
-    </StyledAppBar>
+    </AppBar>
   )
 }
-
-export default Header

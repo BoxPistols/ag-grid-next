@@ -1,5 +1,6 @@
 // theme.ts
 import { createTheme } from '@mui/material/styles'
+import App from '../../pages/_app'
 
 // ===== BreakPoint =====
 // for breakpoint
@@ -43,12 +44,31 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#1978b0',
+      contrastText: '#fff',
     },
     secondary: {
       main: '#9289a3',
     },
     success: {
       main: '#2f9927',
+    },
+    error: {
+      main: '#d32f2f',
+    },
+    warning: {
+      main: '#ff9800',
+    },
+    info: {
+      main: '#2196f3',
+    },
+    text: {
+      primary: 'rgba(20, 30, 10, 0.8)',
+      secondary: 'rgba(20, 30, 10, 0.6)',
+      disabled: 'rgba(20, 30, 10, 0.4)',
+    },
+    background: {
+      default: '#fff',
+      paper: '#fff',
     },
 
     // TODO: Add here
@@ -64,6 +84,27 @@ const theme = createTheme({
     // },
   },
 
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          height: 44,
+        },
+      },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          minHeight: 44,
+          // landscape でのみ適用
+          // '@media (min-width: 0px) and (orientation: landscape)': {
+          '@media (min-width: 0px)': {
+            minHeight: 44,
+          },
+        },
+      },
+    },
+  },
   typography: {
     // すべての Typography コンポーネントで適用されるデフォルトのテキストカラーを設定します。
     allVariants: {
