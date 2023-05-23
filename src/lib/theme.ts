@@ -1,9 +1,12 @@
-// theme.ts
 import { createTheme } from '@mui/material/styles'
-import App from '../../pages/_app'
 
-// ===== BreakPoint =====
-// for breakpoint
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    display1: true
+    display2: true
+  }
+}
+
 export const breakpoints = {
   values: {
     xs: 0,
@@ -30,6 +33,7 @@ const lineHeight = {
 }
 
 const theme = createTheme({
+  // ===== BreakPoint =====
   // default: lg
   breakpoints: {
     values: {
@@ -43,75 +47,21 @@ const theme = createTheme({
 
   palette: {
     primary: {
-      main: '#1978b0',
-      contrastText: '#fff',
-    },
-    secondary: {
-      main: '#9289a3',
-    },
-    success: {
-      main: '#2f9927',
-    },
-    error: {
-      main: '#d32f2f',
-    },
-    warning: {
-      main: '#ff9800',
-    },
-    info: {
-      main: '#2196f3',
+      main: '#4488aa',
     },
     text: {
-      primary: 'rgba(20, 30, 10, 0.8)',
-      secondary: 'rgba(20, 30, 10, 0.6)',
-      disabled: 'rgba(20, 30, 10, 0.4)',
-    },
-    background: {
-      default: '#fff',
-      paper: '#fff',
-    },
-
-    // TODO: Add here
-    // primary: {
-    //   main: '#2196f3', // Primary main color (e.g., blue)
-    //   light: '#6ec6ff', // Primary light color (e.g., light blue)
-    //   dark: '#0069c0', // Primary dark color (e.g., dark blue)
-    // },
-    // secondary: {
-    //   main: '#f50057', // Secondary main color (e.g., pink)
-    //   light: '#ff4081', // Secondary light color (e.g., light pink)
-    //   dark: '#c51162', // Secondary dark color (e.g., dark pink)
-    // },
-  },
-
-  components: {
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          height: 44,
-        },
-      },
-    },
-    MuiToolbar: {
-      styleOverrides: {
-        root: {
-          minHeight: 44,
-          // landscape でのみ適用
-          // '@media (min-width: 0px) and (orientation: landscape)': {
-          '@media (min-width: 0px)': {
-            minHeight: 44,
-          },
-        },
-      },
+      primary: '#234',
     },
   },
+
+  // Typography
   typography: {
     // すべての Typography コンポーネントで適用されるデフォルトのテキストカラーを設定します。
     allVariants: {
       color: 'rgba(20, 30, 10, 0.8)',
       lineHeight: 1.5,
       fontFamily:
-        '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "BIZ UDPゴシック", "Noto Sans JP", Helvetica, Arial, sans-serif !important',
+        ' "Futura", "Helvetica Neue", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "BIZ UDPゴシック", "Noto Sans JP", Helvetica, Arial, sans-serif !important',
       textTransform: 'inherit',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'antialiased',
@@ -165,6 +115,49 @@ const theme = createTheme({
     },
     button: {
       fontWeight: 400,
+    },
+  },
+  // Component
+  components: {
+    MuiTypography: {
+      variants: [
+        {
+          props: { variant: 'display1' },
+          style: {
+            display: 'block',
+            fontSize: '2.4rem',
+            fontWeight: 700,
+            lineHeight: 1.5,
+            color: 'tomato',
+          },
+        },
+        {
+          props: { variant: 'display2' },
+          style: {
+            fontSize: '2.2rem',
+            fontWeight: 700,
+            color: 'tomato',
+            lineHeight: 1.5,
+          },
+        },
+      ],
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          height: 44,
+        },
+      },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          minHeight: 44,
+          '@media(min-width:0px)': {
+            minHeight: 44,
+          },
+        },
+      },
     },
   },
 })
