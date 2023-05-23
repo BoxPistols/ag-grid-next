@@ -38,13 +38,13 @@ const App = () => {
           </h2>
           <CovidDataBasic />
 
-          <h2 className={styles.head_2} style={{ marginTop: 8 }}>
-            AgGrid Table (covid19api)
+          <h2 className={styles.head_2} style={{ marginTop: 44 }}>
+            AgGrid Table + Filter (covid19api)
           </h2>
 
           <CovidData />
 
-          <h2 className={styles.head_2} style={{ marginTop: 32 }}>
+          <h2 className={styles.head_2} style={{ marginTop: 44 }}>
             AgGrid Table (olympic-winners)
           </h2>
           <p>olympic-winnersを通して、大きなデータでAgGrid Tableを検証する</p>

@@ -140,6 +140,8 @@ const CovidData = (): JSX.Element => {
             gridOptions={gridOptions}
             onGridReady={onGridReady}
             onFirstDataRendered={onFirstDataRendered}
+            pagination={true}
+            paginationPageSize={100}
           />
         </div>
       )}
