@@ -5,7 +5,7 @@ import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 // css local
 import { AgBasic } from '@/src/components/AgGrid/AgBasic'
-// import CovidDataBasic from "@/src/components/Chart/CovidDataBasic"
+import CovidDataBasic from '@/src/components/AgGrid/CovidDataBasic'
 import CovidData from '@/src/components/AgGrid/CovidData'
 import ChartBar from '@/src/components/Chart/ChartBar'
 import Typography from '@mui/material/Typography'
@@ -36,10 +36,11 @@ const App = () => {
           <h2 className={styles.head_2} style={{ marginTop: 8 }}>
             AgGrid Table (covid19api)
           </h2>
-          <Typography variant="caption" color="initial" gutterBottom>
-            covid19apiを通して、シンプルなデータでAgGrid
-            Tableを検証する。取得出来ない時はリロードしてください
-          </Typography>
+          <CovidDataBasic />
+
+          <h2 className={styles.head_2} style={{ marginTop: 8 }}>
+            AgGrid Table (covid19api)
+          </h2>
 
           <CovidData />
 

@@ -10,6 +10,7 @@ import { AppBarSideNav } from './AppBarSideNav'
 
 import theme from '../lib/theme'
 import { ReactNode, useState } from 'react'
+import Link from 'next/link'
 
 // Type
 type Props = {
@@ -41,7 +42,7 @@ export const AppBarHeader = ({ children }: Props) => {
             component="div"
             color={theme.palette.primary.contrastText}
           >
-            AgGrid Next Mui
+            <Link href="/">App AgNextMui Dashboard</Link>
           </Typography>
         </Toolbar>
       </AppBar>

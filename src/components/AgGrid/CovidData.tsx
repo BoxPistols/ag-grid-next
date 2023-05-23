@@ -4,40 +4,45 @@ import { GridApi } from 'ag-grid-community'
 import { GridReadyEvent } from 'ag-grid-community'
 
 import TextField from '@mui/material/TextField'
-// import { localeJa } from '@/src/assets/locale.ja'
 import { localeJa } from '../../assets/locale.ja'
 import { Autocomplete } from '@mui/material'
 
-// TypeScript
-interface CountryData {
-  Country: string
-  NewConfirmed: number
-  TotalConfirmed: number
-  NewDeaths: number
-  TotalDeaths: number
-  NewRecovered: number
-  TotalRecovered: number
+interface PatientData {
+  患者_性別: string
+  退院済フラグ: string
+  患者_年代: string
+  都道府県名: string
+  患者_接触歴の有無フラグ: string
+  公表_年月日: string
+  全国地方公共団体コード: string
+  発症_年月日: string
+  '﻿No': string
+  確定_年月日: string
+  患者_職業: string
 }
 
 const CovidData = (): JSX.Element => {
-  const [rowData, setRowData] = useState<CountryData[]>([])
+  const [rowData, setRowData] = useState<PatientData[]>([])
   const [isDataLoaded, setIsDataLoaded] = useState(false)
-  // ----- for MUI filter -----
+
   const [gridApi, setGridApi] = useState<GridApi | null>(null)
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([])
-  const [allCountries, setAllCountries] = useState<string[]>([])
+  const [selectedAges, setSelectedAges] = useState<string[]>([])
+  const [allAges, setAllAges] = useState<string[]>([])
 
-  const gridApiRef = useRef<GridApi | null>(null)
+  // const gridApiRef = useRef<GridApi | null>(null)
 
-  // Data
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch('https://api.covid19api.com/summary')
+      const response = await fetch(
+        'https://api.data.metro.tokyo.lg.jp/v1/Covid19Patient?limit=1000'
+      )
       const data = await response.json()
-      setRowData(data.Countries)
+      setRowData(data[0])
       setIsDataLoaded(true)
-      setAllCountries(
-        data.Countries.map((country: CountryData) => country.Country)
+      setAllAges(
+        Array.from(
+          new Set(data[0].map((patient: PatientData) => patient['患者_年代']))
+        )
       )
       console.log('get data!!')
     } catch (error) {
@@ -48,107 +53,71 @@ const CovidData = (): JSX.Element => {
     fetchData()
   }, [fetchData])
 
-  // ----- for MUI filter -----
   const onGridReady = (event: GridReadyEvent) => {
     setGridApi(event.api)
   }
   const applyFilterModel = (values: string[]) => {
     if (gridApi) {
       const filterModel = {
-        Country: { filterType: 'set', values: selectedCountries },
+        患者_年代: { filterType: 'set', values: selectedAges },
       }
       gridApi.setFilterModel(filterModel)
     }
   }
   const onFirstDataRendered = () => applyFilterModel
 
-  const filterByCountries = (_: any, selectedCountries: string[]) => {
-    setSelectedCountries(selectedCountries)
+  const filterByAges = (_: any, selectedAges: string[]) => {
+    setSelectedAges(selectedAges)
     if (gridApi) {
       const filterModel = {
-        Country: {
+        患者_年代: {
           filterType: 'set',
-          values: selectedCountries,
+          values: selectedAges,
         },
       }
       gridApi.setFilterModel(filterModel)
     }
   }
-  // 選択解除後、再度全表示
   useEffect(() => {
-    if (gridApi && selectedCountries.length === 0) {
+    if (gridApi && selectedAges.length === 0) {
       gridApi.setFilterModel(null)
     }
-  }, [gridApi, selectedCountries])
+  }, [gridApi, selectedAges])
 
   const columnDefs = [
-    { headerName: '国名', field: 'Country' },
-    {
-      headerName: '新規感染者数',
-      field: 'NewConfirmed',
-      filter: 'agNumberColumnFilter',
-      sortable: true,
-      suppressAutoSize: true,
-    },
-    {
-      headerName: '累計感染者数',
-      field: 'TotalConfirmed',
-      filter: 'agNumberColumnFilter',
-      sortable: true,
-    },
-    {
-      headerName: '新規死亡者数',
-      field: 'NewDeaths',
-      filter: 'agNumberColumnFilter',
-      sortable: true,
-    },
-    {
-      headerName: '累計死亡者数',
-      field: 'TotalDeaths',
-      filter: 'agNumberColumnFilter',
-      sortable: true,
-    },
-    {
-      headerName: '新規回復者数',
-      field: 'NewRecovered',
-      filter: 'agNumberColumnFilter',
-      sortable: true,
-    },
-    {
-      headerName: '累計回復者数',
-      field: 'TotalRecovered',
-      filter: 'agNumberColumnFilter',
-      sortable: true,
-    },
+    { headerName: '性別', field: '患者_性別' },
+    { headerName: '年代', field: '患者_年代' },
+    { headerName: '都道府県名', field: '都道府県名' },
+    { headerName: '接触歴', field: '患者_接触歴の有無フラグ' },
+    { headerName: '公表日', field: '公表_年月日' },
+    { headerName: '発症日', field: '発症_年月日' },
+    { headerName: '確定日', field: '確定_年月日' },
+    { headerName: '職業', field: '患者_職業' },
   ]
 
   const defaultColDef = {
-    // defaultColDef
     filter: true,
   }
 
   const localeText = {
-    // localeText
     ...localeJa,
   }
 
   const gridOptions = {
-    // gridOptions
-    maxColWidth: 200, // maxColumnWidth
-    autoSizePadding: 8, // autoSizePadding
+    maxColWidth: 200,
+    autoSizePadding: 8,
   }
 
   return (
     <>
-      {/* // ----- for MUI filter ----- */}
       <Autocomplete
         multiple
-        options={allCountries}
-        onChange={filterByCountries}
+        options={allAges}
+        onChange={filterByAges}
         renderInput={(params) => (
           <TextField
             {...params}
-            label="国名で検索"
+            label="年代で検索"
             variant="outlined"
             style={{ marginBottom: '16px' }}
           />
@@ -163,14 +132,12 @@ const CovidData = (): JSX.Element => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            // lang
             localeText={localeText}
             sideBar={true}
             enableCharts={true}
             enableRangeSelection={true}
             rowGroupPanelShow={'always'}
             gridOptions={gridOptions}
-            // filter
             onGridReady={onGridReady}
             onFirstDataRendered={onFirstDataRendered}
           />
