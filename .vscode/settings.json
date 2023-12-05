@@ -4,5 +4,10 @@
   "markdownlint.run": "onSave",
   "editor.formatOnSave": true,
   "preview.preview.lineHeight": 1.4,
-  "markdown.preview.lineHeight": 1.4
+  "markdown.preview.lineHeight": 1.4,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#2E245E",
+    "titleBar.activeBackground": "#413284",
+    "titleBar.activeForeground": "#FBFAFD"
+  }
 }
