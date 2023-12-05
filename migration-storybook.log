@@ -1,61 +1,110 @@
 🔎 checking possible migrations..
 
-🔎 found a 'eslintPlugin' migration:
-╭ Automigration detected ────────────────────────────────────────────────╮
-│                                                                        │
-│   We've detected you are not using our eslint-plugin.                  │
-│                                                                        │
-│   In order to have the best experience with Storybook and follow       │
-│   best practices, we advise you to install eslint-plugin-storybook.    │
-│                                                                        │
-│   More info:                                                           │
-│   https://github.com/storybookjs/eslint-plugin-storybook#readme        │
-│                                                                        │
-╰────────────────────────────────────────────────────────────────────────╯
-? Do you want to run the 'eslintPlugin' migration on your project? › (Y/n)✔ Do you want to run the 'eslintPlugin' migration on your project? … yes
-✅ Adding dependencies: eslint-plugin-storybook
-✅ Adding Storybook plugin to .eslintrc.json
-❌ error when running eslintPlugin migration
-SyntaxError: .eslintrc.json: Unexpected token / in JSON at position 51
-    at JSON.parse (<anonymous>)
-    at _readFile (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/jsonfile/index.js:25:16)
-    at async Object.run (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:121:142)
-    at async runFixes (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:326:1144)
-    at async automigrate (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:321:636)
-    at async doInitiate (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:356:373)
-    at async withTelemetry (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/core-server/dist/index.js:35:3422)
-    at async initiate (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:367:109)
+🔎 found a 'github-flavored-markdown-mdx' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────╮
+│                                                                                           │
+│   In MDX1 you had the option of using GitHub flavored markdown.                           │
+│                                                                                           │
+│   Storybook 7.0 uses MDX2 for compiling MDX, and thus no longer supports GFM out of the   │
+│   box.                                                                                    │
+│   Because of this you need to explicitly add the GFM plugin in the addon-docs options:    │
+│   https://storybook.js.org/docs/react/writing-docs/mdx#lack-of-github-flavored-markdown   │
+│   -gfm                                                                                    │
+│                                                                                           │
+│   We recommend you follow the guide on the link above, however we can add a temporary     │
+│   storybook addon that helps make this migration easier.                                  │
+│   We'll install the addon and add it to your storybook config.                            │
+│                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'github-flavored-markdown-mdx' migration on your project? › (Y/n)✔ Do you want to run the 'github-flavored-markdown-mdx' migration on your project? … yes
+
+An error occurred while installing dependencies:
+YARN1 error: An unexpected error occurred: "EEXIST: file already exists, symlink '../acorn/bin/acorn' -> '/Users/ai/dev/Asagiri/ag-grid-next/node_modules/@storybook/react/node_modules/acorn-jsx/node_modules/.bin/acorn'".
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+❌ error when running github-flavored-markdown-mdx migration
+HandledError: YARN1 error: An unexpected error occurred: "EEXIST: file already exists, symlink '../acorn/bin/acorn' -> '/Users/ai/dev/Asagiri/ag-grid-next/node_modules/@storybook/react/node_modules/acorn-jsx/node_modules/.bin/acorn'".
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+    at Yarn1Proxy.addDependencies (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:55:75)
+    at async Object.run (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:183:231)
+    ... 4 lines matching cause stack trace ...
+    at async upgrade (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:438:3981) {
+  handled: true,
+  cause: Error: YARN1 error: An unexpected error occurred: "EEXIST: file already exists, symlink '../acorn/bin/acorn' -> '/Users/ai/dev/Asagiri/ag-grid-next/node_modules/@storybook/react/node_modules/acorn-jsx/node_modules/.bin/acorn'".
+  
+  Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+      at Yarn1Proxy.runAddDeps (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:64:3473)
+      at async Yarn1Proxy.addDependencies (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:54:853)
+      at async Object.run (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:183:231)
+      at async runFixes (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:411:1144)
+      at async automigrate (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:406:676)
+      at async doUpgrade (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:438:3535)
+      at async withTelemetry (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/core-server/dist/index.js:65:3948)
+      at async upgrade (/Users/ai/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:438:3981)
+}
 
 
-╭ Migration check ran with failures ─────────────────────────────────────╮
-│                                                                        │
-│   Failed migrations:                                                   │
-│                                                                        │
-│   eslintPlugin:                                                        │
-│   .eslintrc.json: Unexpected token / in JSON at position 51            │
-│                                                                        │
-│   You can find the full logs in                                        │
-│   /Users/ai/dev/Front/AgGrid/ag-grid-next/migration-storybook.log      │
-│                                                                        │
-│   ─────────────────────────────────────────────────                    │
-│                                                                        │
-│   If you'd like to run the migrations again, you can do so by          │
-│   running 'npx storybook@next automigrate'                             │
-│                                                                        │
-│   The automigrations try to migrate common patterns in your project,   │
-│   but might not contain everything needed to migrate to the latest     │
-│   version of Storybook.                                                │
-│                                                                        │
-│   Please check the changelog and migration guide for manual            │
-│   migrations and more information:                                     │
-│   https://storybook.js.org/migration-guides/7.0                        │
-│   And reach out on Discord if you need help:                           │
-│   https://discord.gg/storybook                                         │
-│                                                                        │
-│   ─────────────────────────────────────────────────                    │
-│                                                                        │
-│   You can find more information for a given dependency by running      │
-│   yarn why <package-name>                                              │
-│                                                                        │
-╰────────────────────────────────────────────────────────────────────────╯
+╭ Migration check ran with failures ────────────────────────────────────────────────────────╮
+│                                                                                           │
+│   Failed migrations:                                                                      │
+│                                                                                           │
+│   github-flavored-markdown-mdx:                                                           │
+│   YARN1 error: An unexpected error occurred: "EEXIST: file already exists, symlink        │
+│   '../acorn/bin/acorn' -> '/Users/ai/dev/Asagiri/ag-grid-next/node_modules/@storybook/r   │
+│   eact/node_modules/acorn-jsx/node_modules/.bin/acorn'".                                  │
+│                                                                                           │
+│   Please check the logfile generated at ./storybook.log for troubleshooting and try       │
+│   again.                                                                                  │
+│                                                                                           │
+│   You can find the full logs in                                                           │
+│   /Users/ai/dev/Asagiri/ag-grid-next/migration-storybook.log                              │
+│                                                                                           │
+│   ─────────────────────────────────────────────────                                       │
+│                                                                                           │
+│   If you'd like to run the migrations again, you can do so by running 'npx                │
+│   storybook@next automigrate'                                                             │
+│                                                                                           │
+│   The automigrations try to migrate common patterns in your project, but might not        │
+│   contain everything needed to migrate to the latest version of Storybook.                │
+│                                                                                           │
+│   Please check the changelog and migration guide for manual migrations and more           │
+│   information: https://storybook.js.org/migration-guides/7.0                              │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                 │
+│                                                                                           │
+│   ─────────────────────────────────────────────────                                       │
+│                                                                                           │
+│   Attention: The following dependencies are duplicated which might cause unexpected       │
+│   behavior:                                                                               │
+│                                                                                           │
+│   @storybook/core-common:                                                                 │
+│   7.6.3, 7.0.5                                                                            │
+│                                                                                           │
+│   @storybook/csf-tools:                                                                   │
+│   7.6.3, 7.0.5                                                                            │
+│                                                                                           │
+│   @storybook/channels:                                                                    │
+│   7.6.3, 7.0.5                                                                            │
+│                                                                                           │
+│   @storybook/core-events:                                                                 │
+│   7.6.3, 7.0.5                                                                            │
+│                                                                                           │
+│   @storybook/node-logger:                                                                 │
+│   7.6.3, 7.0.5                                                                            │
+│                                                                                           │
+│   @storybook/types:                                                                       │
+│   7.6.3, 7.0.5                                                                            │
+│                                                                                           │
+│                                                                                           │
+│                                                                                           │
+│                                                                                           │
+│   You can find more information for a given dependency by running yarn why                │
+│   <package-name>                                                                          │
+│                                                                                           │
+│                                                                                           │
+│                                                                                           │
+│                                                                                           │
+│   Please try de-duplicating these dependencies by running yarn dedupe                     │
+│                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────╯
 
