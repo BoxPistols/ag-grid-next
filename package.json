@@ -26,6 +26,7 @@
     "ag-grid-enterprise": "^29.1.0",
     "ag-grid-react": "^29.2.0",
     "chart.js": "^4.2.1",
+    "cli-table3": "^0.6.3",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
     "next": "13.2.3",
@@ -50,5 +51,6 @@
     "@storybook/testing-library": "^0.2.2",
     "eslint-plugin-storybook": "^0.6.15",
     "storybook": "^7.6.3"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
