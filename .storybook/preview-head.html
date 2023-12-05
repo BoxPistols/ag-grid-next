@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- for Storybook Preview -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Inline CSS -->
+    <style>
+        h1:not(.sb-anchor, .sb-unstyled, .sb-unstyled h1):first-of-type {
+            color: hotpink;
+            margin-bottom: 1em;
+        }
+
+        :where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) code {
+            line-height: 1.5;
+            margin: 0 0.1ch;
+            padding: 0px 3px 1px;
+            border-radius: 3px;
+            background: transparent;
+            color: rgb(40, 155, 204) !important;
+            border: 1px solid #33C2FF !important;
+        }
+
+        /* Storybookの右サイドLink Listのスタイル */
+        .toc-wrapper {
+            overflow: auto;
+            max-height: 80vh;
+            min-width: 15rem;
+            line-height: 1.35;
+            background: smoke;
+            font-size: 100%;
+        }
+
+        .toc-link.node-name--H2 {
+            font-size: 95%;
+            font-weight: 700;
+        }
+
+        .toc-link.node-name--H3 {
+            font-size: 85%;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>
