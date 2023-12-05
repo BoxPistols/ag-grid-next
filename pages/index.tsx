@@ -8,8 +8,10 @@ import { AgBasic } from '@/src/components/AgGrid/AgBasic'
 import CovidDataBasic from '@/src/components/AgGrid/CovidDataBasic'
 import CovidData from '@/src/components/AgGrid/CovidData'
 import ChartBar from '@/src/components/Chart/ChartBar'
-import Typography from '@mui/material/Typography'
+import PieChart from '@/src/components/Chart/PieChart'
 import styles from '@/styles/Home.module.css'
+// import { Box } from '@mui/material'
+import 'styles/Home.module.css'
 
 const App = () => {
   return (
@@ -27,7 +29,10 @@ const App = () => {
         <h2 className={styles.head_2} style={{ marginTop: 16 }}>
           Chart
         </h2>
-        <ChartBar />
+        <div className={styles.topChart}>
+          <ChartBar />
+          <PieChart />
+        </div>
 
         <div
           className="ag-theme-alpine"

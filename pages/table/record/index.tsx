@@ -15,8 +15,6 @@ import {
   Container,
   Paper,
 } from '@mui/material'
-// import 'ag-grid-community/styles/ag-grid.css'
-// import 'ag-grid-community/styles/ag-theme-alpine.css'
 
 import CellWithTooltip from './CellWithTooltip'
 
@@ -109,7 +107,14 @@ const PickUpRecortdTable = () => {
           </Box>
           {/* 選択された行を表示するカード */}
           <Box display="flex" flexWrap="wrap" gap={1}>
-            <Card sx={{ minWidth: 275, maxWidth: '100%' }}>
+            <Card
+              sx={{
+                minWidth: 275,
+                maxWidth: '100%',
+                maxHeight: 200,
+                overflow: 'auto',
+              }}
+            >
               <CardContent>
                 {selectedRows.map((row, index) => (
                   <Typography
@@ -136,12 +141,7 @@ const PickUpRecortdTable = () => {
           </Box>
 
           {/* Dialog */}
-          <Dialog
-            open={open}
-            onClose={() => setOpen(false)}
-            maxWidth="xl"
-            // sx={{ minWidth: '70vw' }}
-          >
+          <Dialog open={open} onClose={() => setOpen(false)} maxWidth={'lg'}>
             <DialogTitle>Details</DialogTitle>
             <DialogContent
               sx={{
@@ -150,84 +150,62 @@ const PickUpRecortdTable = () => {
             >
               {selectedRows.map((row, index) => (
                 <Box key={index}>
-                  <Box
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    m={3}
-                    gap={3}
-                  >
-                    <Box display="flex" flexDirection="column" gap={3}>
+                  <Box m={2} gap={1}>
+                    <Box display="flex" flexDirection="column" gap={1}>
                       <Typography variant="h6" color="text.secondary">
                         ID: {row.id}
                         <br />
                         Make: {row.make}
                       </Typography>
-                    </Box>
 
-                    <Box display="flex">
                       <Box
                         display="flex"
-                        justifyContent="center"
+                        justifyContent="space-between"
                         alignItems="center"
-                        flexDirection="column"
-                        m={3}
+                        m={2}
                       >
-                        <Paper
+                        <CircularProgress
+                          variant="determinate"
+                          value={56}
                           sx={{
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            m: 2,
-                            p: 2,
+                            minWidth: 40,
+                            display: 'block',
+                            width: '100%',
+                            mx: 'auto',
+                            m: 1,
                           }}
-                        >
-                          <CircularProgress
-                            variant="determinate"
-                            value={66}
-                            sx={{
-                              minWidth: 40,
-                              display: 'block',
-                              width: '100%',
-                              mx: 'auto',
-                              my: 1,
-                            }}
-                          />
+                        />
 
-                          <Box>
-                            <Typography variant="body2" color="text.secondary">
-                              Model: <br /> {row.model}
-                            </Typography>
-                          </Box>
-                        </Paper>
-                        <Paper
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          fontSize={12}
+                        >
+                          Model: <br /> {row.model}
+                        </Typography>
+
+                        <CircularProgress
+                          variant="determinate"
+                          value={88}
                           sx={{
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            m: 2,
-                            p: 2,
+                            minWidth: 40,
+                            display: 'block',
+                            width: '100%',
+                            mx: 'auto',
+                            m: 1,
                           }}
-                        >
-                          <CircularProgress
-                            variant="determinate"
-                            value={66}
-                            sx={{
-                              minWidth: 40,
-                              display: 'block',
-                              width: '100%',
-                              mx: 'auto',
-                              my: 1,
-                            }}
-                          />
+                        />
 
-                          <Box>
-                            <Typography variant="body2" color="text.secondary">
-                              Price: <br />
-                              {row.price}
-                            </Typography>
-                          </Box>
-                        </Paper>
+                        <Box>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            fontSize={12}
+                          >
+                            Price: <br />
+                            {row.price}
+                          </Typography>
+                        </Box>
                       </Box>
                     </Box>
                   </Box>

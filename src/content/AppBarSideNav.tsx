@@ -23,17 +23,17 @@ const menuItems = [
     text: 'データインポート',
     href: '/table/file-upload',
   },
-  {
-    icon: <TableChart />,
-    text: 'カスタムフィルター',
-    href: '/custom-filter',
-  },
+  // {
+  //   icon: <TableChart />,
+  //   text: 'カスタムフィルター',
+  //   href: '/custom-filter',
+  // },
   {
     icon: <TableChart />,
     text: 'レコードイベント',
     href: '/table/record',
   },
-  { icon: <DataObject />, text: 'Next.js Local APIテスト', href: '/get-api' },
+  // { icon: <DataObject />, text: 'Next.js Local APIテスト', href: '/get-api' },
 ]
 
 export const AppBarSideNav = ({ open }: SideNavProps) => {

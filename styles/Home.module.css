@@ -10,7 +10,7 @@
 .topChart {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 33vw));
   justify-content: center;
   gap: 16px;
 }
