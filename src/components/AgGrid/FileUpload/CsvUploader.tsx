@@ -33,8 +33,8 @@ const CsvUploader = () => {
           comparator: (
             valueA: number | null,
             valueB: number | null,
-            nodeA: any,
-            nodeB: any,
+            _nodeA: any,
+            _nodeB: any,
             isInverted: any
           ) => {
             if (valueA === null && valueB === null) return 0
