@@ -1,9 +1,12 @@
 {
-  "extends": ["next", "next/core-web-vitals"],
+  "extends": [
+    "next",
+    "next/core-web-vitals"
+  ],
   // "plugins": ["react-hooks"],
   "rules": {
-    "@next/next/no-img-element": "off"
-    // "react-hooks/rules-of-hooks": "warn", // Checks rules of Hooks
-    // "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+    "@next/next/no-img-element": "warn",
+    "react-hooks/rules-of-hooks": "warn", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
   }
 }
